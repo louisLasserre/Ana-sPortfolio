@@ -1,0 +1,38 @@
+---
+---
+
+<section class="container-small">
+  <div class="getInTouch" id="contact">
+    <p>any inquiries ?</p>
+    <p class="light">FEEL FREE TO DROP ME AN EMAIL ⎯ I AM AVAILABLE NOW</p>
+    <a href="">
+      <h3 class="smaller-h1">get in touch</h3>
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .getInTouch {
+    margin-top: 10rem;
+    text-transform: uppercase;
+    text-align: center;
+    .light {
+      font-family: $font_title;
+      font-weight: 300;
+    }
+    h3 {
+      padding: 3rem 0;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    h3::after {
+      content: "";
+      display: block;
+      height: 4px;
+      width: 100%;
+      background-color: $color_dark;
+    }
+  }
+</style>

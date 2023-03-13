@@ -1,0 +1,94 @@
+html {
+	font-size: $size_default;
+	@media (max-width: $to_tiny) {
+		font-size: $size_default;
+	}
+	@media (min-width: $from_tiny) and (max-width: $to_small) {
+		font-size: $size_tiny;
+	}
+	@media (min-width: $from_small) and (max-width: $to_medium) {
+		font-size: $size_small;
+	}
+	@media (min-width: $from_medium) and (max-width: $to_large) {
+		font-size: $size_medium;
+	}
+	@media (min-width: $from_large) and (max-width: $to_big) {
+		font-size: $size_large;
+	}
+	@media (min-width: $from_big) and (max-width: $to_huge) {
+		font-size: $size_big;
+	}
+	@media (min-width: $from_huge) and (max-width: $to_enormous) {
+		font-size: $size_huge;
+	}
+	@media (min-width: $from_enormous) and (max-width: $to_gigantic) {
+		font-size: $size_enormous;
+	}
+	@media (min-width: $from_gigantic) and (max-width: $to_colossal) {
+		font-size: $size_gigantic;
+	}
+	@media (min-width: $from_colossal) {
+		font-size: $size_colossal;
+	}
+}
+
+body {
+	background: $color_background;
+	font-family: $font_text;
+}
+
+.container {
+	width: 90vw;
+	margin-right: auto;
+	margin-left: auto;
+
+	@media (min-width: $from_tiny) {
+		max-width: 30rem;
+	}
+
+	@media (min-width: $from_small) {
+		max-width: 96rem;
+	}
+
+	@media (min-width: $from_medium) {
+		width: 94vw;
+		max-width: 1700px;
+	}
+
+	@media (min-width: $from_gigantic) {
+		max-width: 2300px;
+	}
+}
+
+.container-small {
+	width: 80vw;
+	margin-right: auto;
+	margin-left: auto;
+
+	@media (min-width: $from_tiny) {
+		max-width: 30rem;
+	}
+
+	@media (min-width: $from_small) {
+		max-width: 70rem;
+	}
+
+	@media (min-width: $from_medium) {
+		width: 82vw;
+		max-width: 1400px;
+	}
+
+	@media (min-width: $from_gigantic) {
+		max-width: 1800px;
+	}
+}
+
+main {
+	position: relative;
+	overflow: hidden;
+}
+
+section {
+	position: relative;
+	z-index: 1;
+}

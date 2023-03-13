@@ -1,0 +1,26 @@
+@import '01-inits/colors';
+@import '01-inits/sizes';
+@import '01-inits/reset';
+@import '01-inits/fonts';
+@import '01-inits/headings';
+@import '01-inits/pages';
+@import 'anims/anims';
+
+
+
+
+
+
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+}

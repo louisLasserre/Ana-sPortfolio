@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'romie-medium';
+	src: url('/fonts/Romie-Trial-Medium.otf')
+			format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'pp-montreal-book';
+	src: url('/fonts/PPNeueMontreal-Book.otf'),
+			format('opentype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'pp-montreal-italic';
+	src: url('/fonts/PPNeueMontreal-Italic.otf'),
+			format('opentype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'pp-montreal-medium';
+	src: url('/fonts/PPNeueMontreal-Medium.otf')
+      format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'ninna';
+	src: url('/fonts/Ninna-TRIAL.otf')
+      format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+$font_title: 'romie-medium', 'serif';
+
+$font_small_title: 'pp-montreal-book', sans-serif;
+$font_text: 'pp-montreal-book', sans-serif;
+$font_italic: 'pp-montreal-italic', sans-serif;
+$font_medium: 'pp-montreal-medium', sans-serif;
+$font_btn: 'poppins-medium', sans-serif;
+$font_ninna: 'ninna';
+
+.romie {
+  font-family: $font_title;
+}
+.italic {
+ font-family: $font_italic;
+ font-style: italic;
+}
+
+.medium {
+  font-family: $font_medium;
+}

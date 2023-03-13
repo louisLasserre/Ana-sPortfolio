@@ -1,0 +1,57 @@
+---
+import ArrowLeft from "@assets/svgs/Arrow-left.svg";
+---
+
+<div class="header">
+  <a href="">
+    <img src={ArrowLeft} alt="" />
+  </a>
+
+  <p class="romie">Anais Akkouche</p>
+
+  <button class="hamb">
+    <div class="trait"></div>
+    <div class="trait"></div>
+    <div class="trait"></div>
+  </button>
+</div>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 3rem;
+    right: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    z-index: 10;
+
+    .hamb {
+      width: 2rem;
+      height: 1rem;
+      position: relative;
+
+      .trait {
+        height: 1px;
+        width: 100%;
+        background-color: $color_dark;
+        position: absolute;
+
+        &:first-child {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:last-child {
+          bottom: 0;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+//texte underline from left to right animation
+.anim{
+  position: relative;
+  padding: 5px 0;
+
+}
+
+.anim::before{
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: $color_dark;
+  position: absolute;
+  bottom: 0px;
+  transform-origin: right center;
+  left: 0;
+
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+
+}
+
+.anim:hover::before{
+
+  transform: scaleX(1);
+  transform-origin: left center;
+}

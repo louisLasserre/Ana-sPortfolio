@@ -1,0 +1,104 @@
+---
+import "../stylesheet/main.scss";
+
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Directus Astro Example</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+
+  <body class="layout">
+    <Header />
+    <div class="my-container">
+      <main class="page">
+        <slot />
+        <Footer />
+      </main>
+    </div>
+  </body>
+</html>
+
+<script>
+  import ASScroll from "@ashthornton/asscroll";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const isTouch = "ontouchstart" in document.documentElement;
+
+  const pageElement: HTMLElement = document.querySelector(
+    ".page"
+  ) as HTMLElement;
+  const containerElement: HTMLElement = document.querySelector(
+    ".my-container"
+  ) as HTMLElement;
+
+  const asscroll = new ASScroll({
+    containerElement: containerElement,
+    scrollElements: pageElement,
+    touchScrollType: "scrollTop",
+    limitLerpRate: true,
+    disableRaf: true,
+  });
+  //use the raf of gsap
+  gsap.ticker.add(asscroll.update);
+
+  ScrollTrigger.defaults({
+    scroller: asscroll.containerElement,
+  });
+
+  ScrollTrigger.scrollerProxy(asscroll.containerElement, {
+    scrollTop(value) {
+      return arguments.length
+        ? (asscroll.currentPos = value)
+        : asscroll.currentPos;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+  });
+
+  asscroll.on("update", ScrollTrigger.update);
+  ScrollTrigger.addEventListener("refresh", asscroll.resize);
+
+  window.addEventListener("load", () => {
+    const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
+
+    gsap.to(".cadre", {
+      scrollTrigger: {
+        pin: false,
+        scrub: 0.2,
+        trigger: ".parallax",
+        start: "top 95%",
+        end: "bottom top",
+      },
+      y: (i, target) => -totalScroll * target.dataset.speed,
+      ease: "none",
+    });
+    asscroll.enable();
+  });
+
+  window.addEventListener("resize", () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    asscroll.resize({ width, height });
+  });
+</script>
+
+<style lang="scss">
+  .page {
+    background-image: url("/images/GRAIN.png");
+  }
+</style>

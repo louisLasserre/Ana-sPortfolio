@@ -1,0 +1,46 @@
+---
+import TagsBarre from "@components/TagsBarre.astro";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+
+import { getDirectusClient } from "../utils/get-directus-client";
+
+import { APIbuilderData, importComponents } from "src/utils/import-components";
+import Hero from "@components/Hero.astro";
+import LeftAndRightTexts from "@components/LeftAndRightTexts.astro";
+import ParallaxProjects from "@components/ParallaxProjects.astro";
+import GetInTouch from "@components/GetInTouch.astro";
+
+// const directus = await getDirectusClient();
+// const response = await directus.items("Project").readByQuery({
+//   fields: ["*", "test.collection", "test.item"],
+// });
+
+// const projects = response.data;
+// if (!projects) {
+//   console.error("no projects were found");
+//   return null;
+// }
+// const firstProject = projects[0];
+
+// let componentsToImport: APIbuilderData[] = firstProject.test;
+
+// const components = await importComponents(componentsToImport);
+---
+
+<DefaultLayout>
+  <!-- {
+      components.map((Component) => {
+        return Component.then((Result) => <Result />);
+      })
+    } -->
+  <Hero />
+  <LeftAndRightTexts />
+  <ParallaxProjects />
+  <GetInTouch />
+</DefaultLayout>
+
+<style lang="scss">
+  .pannel {
+    height: 100vh;
+  }
+</style>

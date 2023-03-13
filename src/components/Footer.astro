@@ -1,0 +1,64 @@
+---
+---
+
+<footer class="container-small line">
+  <div class="left-section column">
+    <p class="italic">CREATIVITY PAIRED WITH GUIDANCE CREATES THE BEST ART.</p>
+    <div>
+      <a href="" class="anim"><span>↗</span>LinkedIn</a>
+      <a href="" class="anim"><span>↗</span>Behance</a>
+    </div>
+  </div>
+
+  <div class="column maj medium">
+    <a href="" class="anim">about</a>
+    <a href="" class="anim">projects</a>
+    <a href="" class="anim">contact me</a>
+  </div>
+
+  <div class="column medium">
+    <a href="" class="anim">+33 6 01 20 47 12</a>
+    <a class="maj" href="">Bordeaux</a>
+    <a href="" class="anim">anais.akkouche03@gmail.com</a>
+  </div>
+</footer>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+  .maj {
+    text-transform: uppercase;
+  }
+  .anim {
+    width: fit-content;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 8rem 0 6rem 0;
+    &.line {
+      border-top: 1px solid $color_dark;
+    }
+    .left-section {
+      max-width: 44%;
+      a {
+        display: inline;
+        font-weight: 300;
+        &:last-of-type {
+          margin-left: 1rem;
+        }
+      }
+      span {
+        font-family: $font_medium;
+        font-size: 1.4em;
+        margin-right: 4px;
+      }
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 18vh;
+    }
+  }
+</style>
