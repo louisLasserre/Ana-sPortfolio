@@ -3,10 +3,10 @@
 
 <section class="container-small">
   <div class="getInTouch" id="contact">
-    <p>any inquiries ?</p>
+    <p class="mainText">any inquiries ?</p>
     <p class="light">FEEL FREE TO DROP ME AN EMAIL ⎯ I AM AVAILABLE NOW</p>
     <a href="">
-      <h3 class="smaller-h1">get in touch</h3>
+      <h3 class="smaller-h1" is-inview>get in touch</h3>
     </a>
   </div>
 </section>
@@ -26,7 +26,15 @@
       padding: 3rem 0;
       width: fit-content;
       margin: 0 auto;
+      transform: translateY(80%);
+      opacity: 0;
+      &.inview {
+        transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
+
     h3::after {
       content: "";
       display: block;

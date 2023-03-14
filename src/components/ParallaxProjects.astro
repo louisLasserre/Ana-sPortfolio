@@ -3,7 +3,9 @@
 
 <section class="container-small">
   <div class="parallax-projects">
-    <h2 class="smaller-h1">Selected <br /> projects</h2>
+    <h2 class="smaller-h1" is-inview>
+      <span>Selected <br /> projects</span>
+    </h2>
 
     <div class="parallaxDemerde parallax">
       <div class="img-1 cadre" data-speed="0.50">
@@ -55,6 +57,13 @@
     margin-top: 10rem;
     h2 {
       text-transform: uppercase;
+      transform: translateY(80%);
+      opacity: 0;
+      &.inview {
+        transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
     .parallax {
       margin-bottom: -30rem;

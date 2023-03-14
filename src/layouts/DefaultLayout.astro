@@ -16,9 +16,11 @@ import Footer from "@components/Footer.astro";
   <body class="layout">
     <Header />
     <div class="my-container">
-      <main class="page">
-        <slot />
-        <Footer />
+      <main class="page taches">
+        <div class="taches">
+          <slot />
+          <Footer />
+        </div>
       </main>
     </div>
   </body>
@@ -28,8 +30,9 @@ import Footer from "@components/Footer.astro";
   import ASScroll from "@ashthornton/asscroll";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { CustomEase } from "gsap/CustomEase";
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, CustomEase);
 
   const isTouch = "ontouchstart" in document.documentElement;
 
@@ -75,6 +78,8 @@ import Footer from "@components/Footer.astro";
 
   window.addEventListener("load", () => {
     const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
+    var ease1 = CustomEase.create("ease1", "0.165, 0.84, 0.44, 1");
+    var ease2 = CustomEase.create("ease2", "0.22, 1, 0.36, 1");
 
     gsap.to(".cadre", {
       scrollTrigger: {
@@ -87,8 +92,32 @@ import Footer from "@components/Footer.astro";
       y: (i, target) => -totalScroll * target.dataset.speed,
       ease: "none",
     });
+    console.log(document.querySelectorAll("div[is-inview]"));
+
+    const elements: string[] = gsap.utils.toArray("[is-inview]");
+    elements.forEach((elmt: string) => {
+      gsap.to(elmt, {
+        scrollTrigger: {
+          trigger: elmt,
+          start: "top bottom",
+          end: "top top",
+          toggleClass: "inview",
+          markers: true,
+          once: true,
+        },
+      });
+    });
+    gsap.from(".pageTitle", {
+      y: "100%",
+      opacity: "0",
+      duration: 0.8,
+      delay: (i, target) => target.dataset.delay,
+      ease: "ease2",
+    });
+
     asscroll.enable();
   });
+  // cubic-bezier(0.22, 1, 0.36, 1)
 
   window.addEventListener("resize", () => {
     const width = window.innerWidth;
@@ -98,7 +127,13 @@ import Footer from "@components/Footer.astro";
 </script>
 
 <style lang="scss">
-  .page {
+  .taches {
     background-image: url("/images/GRAIN.png");
+  }
+  .page {
+    background-image: url("images/fond-test-accueil.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 </style>

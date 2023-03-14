@@ -75,11 +75,11 @@ body {
 
 	@media (min-width: $from_medium) {
 		width: 82vw;
-		max-width: 1400px;
+		max-width: 1200px;
 	}
 
 	@media (min-width: $from_gigantic) {
-		max-width: 1800px;
+		max-width: 1400px;
 	}
 }
 
