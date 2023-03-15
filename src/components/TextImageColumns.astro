@@ -1,0 +1,62 @@
+<section class="my-vision">
+  <div class="container-small">
+    <article class="column">
+      <h2>My vision</h2>
+
+      <p>Beauty is in everything.</p><p>
+        I have always been into art and design, whether it be photography,
+        music, fashion or magazines.
+      </p>
+      <p>
+        As a designer, my goal is to help brands reach their full potential with
+        designs curated for them.
+      </p><p>
+        I am passionate about creating designs that are not only aesthetically
+        pleasing but also serve a purpose.
+      </p>
+    </article>
+    <div class="column">
+      <div class="imgContainer">
+        <img src="/images/profile.png" alt="" srcset="" />
+      </div>
+    </div>
+  </div>
+
+  <style lang="scss">
+    @import "../stylesheet/main.scss";
+
+    .container-small {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10%;
+
+      @media (max-width: $from_small) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      padding-top: 10rem;
+
+      .column {
+        width: 50%;
+        .imgContainer {
+          width: 80%;
+          margin: 0 auto;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        h2 {
+          text-transform: uppercase;
+          font-family: $font_medium;
+        }
+        p {
+          font-weight: 300;
+          margin-top: 1rem;
+        }
+      }
+    }
+  </style>
+</section>

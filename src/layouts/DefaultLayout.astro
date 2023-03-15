@@ -76,6 +76,15 @@ import Footer from "@components/Footer.astro";
   asscroll.on("update", ScrollTrigger.update);
   ScrollTrigger.addEventListener("refresh", asscroll.resize);
 
+  function toggleClasses(elmt: HTMLElement) {
+    const attribute = elmt.attributes["is-inview"].value;
+    // const classes = attribute.replace(/\s/g, ",");
+    // const classToAdd = `'inview','${classes}'`;
+    // console.log(classToAdd);
+
+    elmt.classList.add("inview", attribute);
+  }
+
   window.addEventListener("load", () => {
     const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
     var ease1 = CustomEase.create("ease1", "0.165, 0.84, 0.44, 1");
@@ -99,9 +108,9 @@ import Footer from "@components/Footer.astro";
       gsap.to(elmt, {
         scrollTrigger: {
           trigger: elmt,
-          start: "top bottom",
+          start: "top 100%",
           end: "top top",
-          toggleClass: "inview",
+          onEnter: (elmt) => toggleClasses(elmt.trigger),
           once: true,
         },
       });

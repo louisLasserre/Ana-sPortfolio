@@ -1,0 +1,19 @@
+---
+const { text } = Astro.props;
+---
+
+<div class="container-small">
+  <p>{text}</p>
+</div>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .container-small {
+    margin: 8rem 0;
+  }
+  p {
+    font-family: $font_ninna;
+    font-size: 1.8rem;
+  }
+</style>

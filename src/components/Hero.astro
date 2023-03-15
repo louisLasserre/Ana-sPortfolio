@@ -1,10 +1,19 @@
+---
+const { title, lead, description } = Astro.props;
+---
+
 <section class="container-small">
   <div class="hero">
     <article>
-      <h1 class="pageTitle">BRAND & UX/UI <br /> DESIGNER</h1>
+      <h1 class="pageTitle" set:html={title} data-delay="0.1" />
       <p class="pageTitle" data-delay="0.3">
-        CRAFTING VISUAL STORIES AND ELEVATING BRANDS THROUGH INNOVATIVE DESIGNS
+        {lead}
       </p>
+      <p
+        class="pageTitle stylable description"
+        data-delay="0.3"
+        set:html={description}
+      />
     </article>
     <div class="v-trait"></div>
   </div>
@@ -20,9 +29,16 @@
     justify-content: space-between;
     padding-top: 10rem;
     p {
-      margin-top: 5rem;
+      margin-top: 2rem;
       font-weight: 300;
-      text-transform: uppercase;
+    }
+    .description {
+      max-width: 60%;
+      @media screen and (max-width: $to-tiny) {
+        max-width: 80%;
+      }
+      margin-left: auto;
+      margin-right: auto;
     }
     .pannel {
       height: 100vh;

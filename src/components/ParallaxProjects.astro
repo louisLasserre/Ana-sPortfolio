@@ -1,9 +1,10 @@
 ---
+import ButtonOutline from "./ButtonOutline.astro";
 ---
 
 <section class="container-small">
   <div class="parallax-projects">
-    <h2 class="smaller-h1" is-inview>
+    <h2 class="smaller-h1" is-inview="fromB">
       <span>Selected <br /> projects</span>
     </h2>
 
@@ -45,7 +46,7 @@
         </a>
       </div>
       <div class="button-container cadre" data-speed="0.15">
-        <a href="" class="button">Explore projects</a>
+        <ButtonOutline>Explore projects</ButtonOutline>
       </div>
     </div>
   </div>
@@ -57,13 +58,6 @@
     margin-top: 10rem;
     h2 {
       text-transform: uppercase;
-      transform: translateY(80%);
-      opacity: 0;
-      &.inview {
-        transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
     .parallax {
       margin-bottom: -30rem;
@@ -147,12 +141,7 @@
         justify-content: flex-end;
         margin-bottom: 2rem;
         align-items: center;
-        .button {
-          padding: 0.8rem;
-          border: 1px solid $color_dark;
-          border-radius: 200px;
-          white-space: nowrap;
-        }
+
         @media (max-width: $to_small) {
           align-items: flex-start;
           margin-bottom: 0;

@@ -10,6 +10,11 @@ import LeftAndRightTexts from "@components/LeftAndRightTexts.astro";
 import ParallaxProjects from "@components/ParallaxProjects.astro";
 import GetInTouch from "@components/GetInTouch.astro";
 
+const heroProps = {
+  title: `BRAND & UX/UI <br /> DESIGNER`,
+  lead: "CRAFTING VISUAL STORIES AND ELEVATING BRANDS THROUGH INNOVATIVE DESIGNS",
+};
+
 // const directus = await getDirectusClient();
 // const response = await directus.items("Project").readByQuery({
 //   fields: ["*", "test.collection", "test.item"],
@@ -33,7 +38,7 @@ import GetInTouch from "@components/GetInTouch.astro";
         return Component.then((Result) => <Result />);
       })
     } -->
-  <Hero />
+  <Hero {...heroProps} />
   <LeftAndRightTexts />
   <ParallaxProjects />
   <GetInTouch />

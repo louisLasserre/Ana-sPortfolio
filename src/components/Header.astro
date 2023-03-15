@@ -16,8 +16,84 @@ import ArrowLeft from "@assets/svgs/Arrow-left.svg";
   </button>
 </div>
 
+<section class="hambOpen romie">
+  <div class="links">
+    <a href="/about" class="anim light">About</a>
+    <a href="" class="anim light">Projects</a>
+    <a href="" class="anim light">Contact me</a>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { CustomEase } from "gsap/CustomEase";
+
+  var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
+
+  function openHamb() {
+    console.log("open");
+
+    gsap.to(".hambOpen", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      delay: 0.1,
+      duration: 0.8,
+      ease: "superEase",
+    });
+  }
+  function closeHamb() {
+    console.log("close");
+    gsap.to(".hambOpen", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+      delay: 0.1,
+      duration: 0.8,
+      ease: "superEase",
+    });
+  }
+
+  let hambStatus = false;
+
+  const burger = document.querySelector(".hamb");
+  const header = document.querySelector(".header") as HTMLElement;
+
+  if (burger) {
+    burger.addEventListener("click", (e) => {
+      hambStatus = !hambStatus;
+      header.classList.toggle("hambOn");
+
+      if (hambStatus == true) {
+        return openHamb();
+      }
+      if (hambStatus == false) {
+        return closeHamb();
+      }
+    });
+  }
+</script>
+
 <style lang="scss">
   @import "../stylesheet/main.scss";
+
+  .hambOpen {
+    background-color: $color_dark;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 18;
+    display: grid;
+    place-items: center;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    .links {
+      color: $color_background;
+      font-size: 3rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+      a {
+      }
+    }
+  }
 
   .header {
     display: flex;
@@ -28,12 +104,29 @@ import ArrowLeft from "@assets/svgs/Arrow-left.svg";
     justify-content: space-between;
     align-items: center;
     padding-top: 1rem;
-    z-index: 10;
+    z-index: 20;
+
+    & > p {
+      color: $color_dark;
+      transition: color 0.3s;
+      transition-delay: 0.2s;
+    }
+    &.hambOn {
+      .hamb {
+        .trait {
+          background-color: $color_background;
+        }
+      }
+      & > p {
+        color: $color_background;
+      }
+    }
 
     .hamb {
       width: 2rem;
       height: 1rem;
       position: relative;
+      z-index: 20;
 
       .trait {
         height: 1px;

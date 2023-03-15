@@ -1,25 +1,29 @@
 ---
 ---
 
-<footer class="container-small line">
-  <div class="left-section column">
-    <p class="italic">CREATIVITY PAIRED WITH GUIDANCE CREATES THE BEST ART.</p>
-    <div>
-      <a href="" class="anim"><span>↗</span>LinkedIn</a>
-      <a href="" class="anim"><span>↗</span>Behance</a>
+<footer class="">
+  <div class="footer container-small line">
+    <div class="left-section column">
+      <p class="italic">
+        CREATIVITY PAIRED WITH GUIDANCE CREATES THE BEST ART.
+      </p>
+      <div>
+        <a href="" class="anim"><span>↗</span>LinkedIn</a>
+        <a href="" class="anim"><span>↗</span>Behance</a>
+      </div>
     </div>
-  </div>
 
-  <div class="column maj medium">
-    <a href="" class="anim">about</a>
-    <a href="" class="anim">projects</a>
-    <a href="" class="anim">contact me</a>
-  </div>
+    <div class="column maj medium">
+      <a href="" class="anim">about</a>
+      <a href="" class="anim">projects</a>
+      <a href="" class="anim">contact me</a>
+    </div>
 
-  <div class="column medium">
-    <a href="" class="anim">+33 6 01 20 47 12</a>
-    <a class="maj" href="">Bordeaux</a>
-    <a href="" class="anim">anais.akkouche03@gmail.com</a>
+    <div class="column medium">
+      <a href="" class="anim">+33 6 01 20 47 12</a>
+      <a class="maj" href="">Bordeaux</a>
+      <a href="" class="anim">anais.akkouche03@gmail.com</a>
+    </div>
   </div>
 </footer>
 
@@ -31,8 +35,13 @@
   .anim {
     width: fit-content;
   }
-
   footer {
+    backdrop-filter: blur(5px);
+  }
+  .line {
+    border-top: 1px solid $color_dark;
+  }
+  .footer {
     display: flex;
     justify-content: space-between;
     padding: 8rem 0 6rem 0;
@@ -40,9 +49,7 @@
       flex-direction: column;
       gap: 2rem;
     }
-    &.line {
-      border-top: 1px solid $color_dark;
-    }
+
     .left-section {
       max-width: 44%;
       a {
