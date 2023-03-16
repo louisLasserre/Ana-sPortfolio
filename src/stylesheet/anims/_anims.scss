@@ -35,8 +35,8 @@ $bezier: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 //aparition des éléments
 
-[is-inview] {
-  &.inview.fromB {
+[is-inview], [data-anim] {
+  &.inview.fromB, &.anim.fromB {
     animation-name: fromB;
     animation-duration: 1.8s;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
