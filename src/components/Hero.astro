@@ -1,5 +1,5 @@
 ---
-const { title, lead, description } = Astro.props;
+const { title, lead, description, line } = Astro.props;
 ---
 
 <section class="container-small">
@@ -15,7 +15,9 @@ const { title, lead, description } = Astro.props;
         set:html={description}
       />
     </article>
-    <div class="v-trait"></div>
+
+    {line && <div class="v-trait" />}
+    <slot />
   </div>
 </section>
 <style lang="scss">
