@@ -11,11 +11,12 @@ const heroProps = {
   lead: "GET TO KNOW ME",
   description: `Hi, I’m Anais,<span> a brand & UX/UI designer</span> based in Bordeaux.<br> Currently in my second year at<span> MMI Bordeaux</span>.<br><br>I am looking for a <span>3 month internship </span>starting in <span>April</span>, as well as an<span> apprenticeship for September 2023. </span>`,
   line: false,
+  size: "small",
 };
 const citation = "CREATIVITY PAIRED WITH GUIDANCE CREATES THE BEST ART.";
 ---
 
-<DefaultLayout>
+<DefaultLayout back="/">
   <Hero {...heroProps} />
   <TextImageColumns />
   <Citation text={citation} />

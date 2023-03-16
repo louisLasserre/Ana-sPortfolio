@@ -1,11 +1,19 @@
 ---
 import ArrowLeft from "@assets/svgs/Arrow-left.svg";
+
+const { back } = Astro.props;
 ---
 
 <div class="header">
-  <a href="">
-    <img src={ArrowLeft} alt="" />
-  </a>
+  {
+    back ? (
+      <a href={back}>
+        <img src={ArrowLeft} alt="" />
+      </a>
+    ) : (
+      <div />
+    )
+  }
 
   <p class="romie">Anais Akkouche</p>
 

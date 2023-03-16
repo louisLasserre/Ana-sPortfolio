@@ -3,6 +3,8 @@ import "../stylesheet/main.scss";
 
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+
+const { back } = Astro.props;
 ---
 
 <html lang="fr">
@@ -14,7 +16,7 @@ import Footer from "@components/Footer.astro";
   </head>
 
   <body class="layout">
-    <Header />
+    <Header back={back} />
     <div class="my-container">
       <main class="page taches">
         <div class="taches">

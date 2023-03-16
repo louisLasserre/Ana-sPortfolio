@@ -1,8 +1,8 @@
 ---
-const { title, lead, description, line } = Astro.props;
+const { title, lead, description, line, size } = Astro.props;
 ---
 
-<section class="container-small">
+<section class={size === "small" ? "container-small" : "container"}>
   <div class="hero">
     <article>
       <h1 class="pageTitle" set:html={title} data-delay="0.1" />

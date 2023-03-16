@@ -46,6 +46,9 @@ const { data } = Astro.props;
       grid-template-columns: repeat(2, 1fr);
     }
   }
+  .container {
+    padding-top: 10rem;
+  }
   .cadre {
     img {
       transition: filter 0.4s;
@@ -66,7 +69,7 @@ const { data } = Astro.props;
         top: 50%;
         transform: translate(-50%, -50%);
         transition: opacity 0.4s;
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 1.6rem;
         border-radius: 200px;
         background-color: $color_dark;
         color: $color_background;
