@@ -29,68 +29,18 @@ const { back } = Astro.props;
 </html>
 
 <script>
-  import ASScroll from "@ashthornton/asscroll";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { CustomEase } from "gsap/CustomEase";
+  import { init } from "@utils/scroll/useScroll";
 
-  gsap.registerPlugin(ScrollTrigger, CustomEase);
-
-  const isTouch = "ontouchstart" in document.documentElement;
-
-  const pageElement: HTMLElement = document.querySelector(
-    ".page"
-  ) as HTMLElement;
-  const containerElement: HTMLElement = document.querySelector(
-    ".my-container"
-  ) as HTMLElement;
-
-  const asscroll = new ASScroll({
-    containerElement: containerElement,
-    scrollElements: pageElement,
-    touchScrollType: "scrollTop",
-    limitLerpRate: true,
-    disableRaf: true,
-  });
-  //use the raf of gsap
-  gsap.ticker.add(asscroll.update);
-
-  ScrollTrigger.defaults({
-    scroller: asscroll.containerElement,
-  });
-
-  ScrollTrigger.scrollerProxy(asscroll.containerElement, {
-    scrollTop(value) {
-      return arguments.length
-        ? (asscroll.currentPos = value)
-        : asscroll.currentPos;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-  });
-
-  asscroll.on("update", ScrollTrigger.update);
-  ScrollTrigger.addEventListener("refresh", asscroll.resize);
+  const { gsap, ease1, ease2, asscroll } = init();
 
   function toggleClasses(elmt: HTMLElement) {
     const attribute = elmt.attributes["is-inview"].value;
-    // const classes = attribute.replace(/\s/g, ",");
-    // const classToAdd = `'inview','${classes}'`;
-    // console.log(classToAdd);
 
     elmt.classList.add("inview", attribute);
   }
 
   window.addEventListener("load", () => {
     const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
-    var ease1 = CustomEase.create("ease1", "0.165, 0.84, 0.44, 1");
-    var ease2 = CustomEase.create("ease2", "0.22, 1, 0.36, 1");
 
     gsap.to(".cadre", {
       scrollTrigger: {
@@ -103,7 +53,6 @@ const { back } = Astro.props;
       y: (i, target) => -totalScroll * target.dataset.speed,
       ease: "none",
     });
-    console.log(document.querySelectorAll("div[is-inview]"));
 
     const elements: string[] = gsap.utils.toArray("[is-inview]");
     elements.forEach((elmt: string) => {
@@ -122,17 +71,8 @@ const { back } = Astro.props;
       opacity: "0",
       duration: 0.8,
       delay: (i, target) => target.dataset.delay,
-      ease: "ease2",
+      ease: ease2,
     });
-
-    asscroll.enable();
-  });
-  // cubic-bezier(0.22, 1, 0.36, 1)
-
-  window.addEventListener("resize", () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    asscroll.resize({ width, height });
   });
 </script>
 

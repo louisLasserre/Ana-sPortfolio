@@ -33,10 +33,9 @@ const { back } = Astro.props;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { CustomEase } from "gsap/CustomEase";
-
-  var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
+  import { scrollInstance } from "@utils/scroll/useScroll";
+  const { gsap, ease1, ease2 } = scrollInstance();
+  //var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
 
   function openHamb() {
     console.log("open");
@@ -46,8 +45,8 @@ const { back } = Astro.props;
     open.to(".hambOpen", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       delay: 0.1,
-      duration: 0.8,
-      ease: "superEase",
+      duration: 1,
+      ease: ease2,
     });
 
     const elements: string[] = gsap.utils.toArray(".headerLink");
@@ -59,7 +58,7 @@ const { back } = Astro.props;
           opacity: "0",
           duration: 0.8,
           delay: (i, target) => target.dataset.delay,
-          ease: "superEase",
+          ease: ease1,
         },
         "texts"
       );
@@ -71,7 +70,7 @@ const { back } = Astro.props;
       clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
       delay: 0.1,
       duration: 0.8,
-      ease: "superEase",
+      ease: ease2,
     });
     const texts = document.querySelectorAll("[data-anim]");
     texts.forEach((text) => {
