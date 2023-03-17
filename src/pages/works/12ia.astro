@@ -1,0 +1,56 @@
+---
+import Citation from "@components/Citation.astro";
+import GridImages from "@components/GridImages.astro";
+import Hero from "@components/Hero.astro";
+import Paragraphe from "@components/Paragraphe.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import WorkTextImageColumns from "@components/WorkTextImageColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "12IA",
+  lead: "June 2022",
+  line: false,
+};
+
+const tags = ["branding", "art direction", "print", "social media"];
+const paragraphetext = `During a month long internship @ Agence Bloom in June 2022, I had the
+    opportunity to work on 12IA.<br /> A unisex and ethical brand, based in Bordeaux.<br
+    />
+    Their style is edgy and unapologetically raw.<br /> Working with them has allowed
+    me to go for a darker theme and palette when coming up with their brand strategy.<br
+    />
+    Below is the brand strategy we came up with to elevate 12IA. Keeping darker colors
+    while going for a more modern style.`;
+
+const images = [
+  "/images/12ia/grid1png.png",
+  "/images/12ia/grid2.png",
+  "/images/12ia/grid3.png",
+  "/images/12ia/grid4.png",
+  "/images/12ia/grid5.png",
+  "/images/12ia/grid6.png",
+];
+
+const textImgText = `In order to show love and appreciation for customers, a unique postcard is added in the packages sent.<br><br>
+Here it reads one of Oscar Wilde’s quote: “Loving yourself is the beginning of a lifelong love story”<br><br>
+We went for something pretty straighforward while still keeping 12IA’s edge.`;
+---
+
+<ProjectsLayout>
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+  <Paragraphe text={paragraphetext} />
+
+  <GridImages images={images} />
+  <Citation
+    text="FASHION IS AN ART WHERE WE’RE FREE TO EXPERIMENT AND MAKE MISTAKES - HERE LIES IT’S BEAUTY."
+  />
+  <WorkTextImageColumns
+    title="gift in a bag"
+    text={textImgText}
+    img={{
+      src: "/images/12ia/12IAmockup.png",
+      alt: "image de mockup pour 12ia",
+    }}
+  />
+</ProjectsLayout>

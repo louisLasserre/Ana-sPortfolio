@@ -1,0 +1,70 @@
+---
+import ButtonOutline from "./ButtonOutline.astro";
+
+interface Props {
+  image: {
+    src: string;
+    alt?: string;
+  };
+  text: string;
+  btn: {
+    text: string;
+    href: string;
+  };
+}
+
+const { image, text, btn } = Astro.props;
+---
+
+<section class="container-small">
+  <div class="flex">
+    <div class="imgContainer">
+      <img src="/images/yedus/mockup.png" alt="" />
+    </div>
+    <div class="text">
+      <p>
+        Yedus is a website that curates a song depending on your mood.<br /><br
+        /> Choose your current mood and listen to music that match!<br /><br /> This
+        is a demo version that currently only works with Spotify.<br /><br /> Technology
+        used: RubyOnRails & Figma
+      </p>
+      <div class="btnContainer">
+        <ButtonOutline href="/dede">Visit website</ButtonOutline>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .container-small {
+    margin-top: 6rem;
+    .flex {
+      display: flex;
+      gap: 2rem;
+      @media (max-width: $to_medium) {
+        flex-direction: column;
+      }
+      .imgContainer {
+        width: 60%;
+        @media (max-width: $to_medium) {
+          width: 80%;
+          margin: 0 auto;
+        }
+        @media (max-width: $to_small) {
+          width: 100%;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .btnContainer {
+        margin: 2rem auto 0 auto;
+        width: fit-content;
+      }
+    }
+  }
+</style>

@@ -100,3 +100,28 @@ p.stylable {
     font-weight: 400;
   }
 }
+
+.lightMode {
+
+  background-color: $color_background;
+  color: $color_dark;
+  border-color: $color_dark;
+}
+.page {
+  p, h1, h2, h3 {
+    color: inherit;
+
+
+  }
+  * {
+    border-color: inherit;
+  }
+}
+
+.darkMode {
+
+
+  background-color: $color_dark;
+  color: $color_background;
+  border-color: $color_background;
+}

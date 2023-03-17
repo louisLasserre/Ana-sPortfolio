@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  img: {
+    src: string;
+    alt?: string;
+  };
+}
+const { title, text, img } = Astro.props;
+---
+
+<section class="my-vision">
+  <div class="container-small">
+    <article class="column">
+      <h2>{title}</h2>
+
+      <p set:html={text} />
+    </article>
+    <div class="column">
+      <div class="imgContainer">
+        <img src={img.src} alt={img.alt} srcset="" />
+      </div>
+    </div>
+  </div>
+
+  <style lang="scss">
+    @import "../stylesheet/main.scss";
+
+    .container-small {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10%;
+
+      @media (max-width: $from_small) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      padding-top: 10rem;
+
+      .column {
+        width: 50%;
+        .imgContainer {
+          width: 80%;
+          margin: 0 auto;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        h2 {
+          text-transform: uppercase;
+          font-family: $font_text;
+          font-size: 2rem;
+        }
+        p {
+          font-weight: 300;
+          margin-top: 2rem;
+        }
+      }
+    }
+  </style>
+</section>

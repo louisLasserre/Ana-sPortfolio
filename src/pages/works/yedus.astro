@@ -1,0 +1,30 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import Mockup from "@components/Mockup.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "YEDUS",
+  lead: "February 2022",
+  line: false,
+};
+
+const tags = [
+  "Programming",
+  "UX-UI design",
+  "art direction",
+  "digital experience",
+];
+---
+
+<ProjectsLayout mode="dark">
+  <Hero {...heroProps}>
+    <TagsBarre tags={tags} />
+  </Hero>
+  <Mockup />
+  <Citation
+    text="MUSIC ELEVATES ONE’S DAY AND ACCOMPANIES US THROUGH GOOD AND BAD MOMENTS. YEDUS ALLOWS YOU TO DO JUST THAT."
+  />
+</ProjectsLayout>

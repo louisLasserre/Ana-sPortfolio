@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<section class="container-small">
+  <p set:html={text} />
+</section>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .container-small {
+    margin-top: 6rem;
+    line-height: 2rem;
+    font-weight: 300;
+  }
+</style>

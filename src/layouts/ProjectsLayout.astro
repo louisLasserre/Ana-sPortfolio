@@ -4,7 +4,7 @@ import "../stylesheet/main.scss";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
-const { back } = Astro.props;
+const { back, mode } = Astro.props;
 ---
 
 <html lang="fr">
@@ -18,7 +18,7 @@ const { back } = Astro.props;
   <body class="layout">
     <Header back={back} />
     <div class="my-container">
-      <main class="page taches">
+      <main class=`page taches ${mode === "dark" ? 'darkMode' : 'lightMode'}`>
         <div class="taches">
           <slot />
           <Footer />
@@ -41,18 +41,6 @@ const { back } = Astro.props;
 
   window.addEventListener("load", () => {
     const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
-
-    gsap.to(".cadre", {
-      scrollTrigger: {
-        pin: false,
-        scrub: 0.2,
-        trigger: ".parallax",
-        start: "top 95%",
-        end: "bottom top",
-      },
-      y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none",
-    });
 
     const elements: string[] = gsap.utils.toArray("[is-inview]");
     elements.forEach((elmt: string) => {
@@ -81,12 +69,5 @@ const { back } = Astro.props;
 
   .taches {
     background-image: url("/images/GRAIN.png");
-  }
-  .page {
-    background-image: url("/images/fond-test-accueil.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: $color_background;
   }
 </style>

@@ -29,11 +29,19 @@ const projects = [
   },
   { imgUrl: "/images/alpro.png", name: "ALPRO (2022)", link: "/alpro" },
 ];
+
+const tags = [
+  "ARTISTIC DIRECTION",
+  "ux/ui",
+  "branding",
+  "packaging",
+  "editorial",
+];
 ---
 
 <DefaultLayout back="/">
   <Hero {...heroProps}>
-    <TagsBarre />
+    <TagsBarre tags={tags} />
   </Hero>
   <CardsGrid data={projects} />
 </DefaultLayout>

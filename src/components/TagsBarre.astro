@@ -1,9 +1,13 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
 <div class="bandeau">
-  <p>ARTISTIC DIRECTION</p>
-  <p>ux/ui</p>
-  <p>branding</p>
-  <p>packaging</p>
-  <p>editorial</p>
+  {tags.map((tag) => <p>{tag}</p>)}
 </div>
 
 <style lang="scss">
@@ -16,7 +20,7 @@
     width: 100%;
     padding: 0.6rem 3rem;
     border-radius: 120px;
-    border: 1px solid $color_dark;
+    border: 1px solid;
     flex-wrap: wrap;
     p {
       text-transform: uppercase;

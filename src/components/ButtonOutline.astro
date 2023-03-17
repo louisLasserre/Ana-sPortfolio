@@ -1,4 +1,8 @@
 ---
+interface Props {
+  href: sring;
+}
+const { href } = Astro.props;
 ---
 
 <a href="" class="button"><slot /></a>
@@ -8,7 +12,7 @@
 
   .button {
     padding: 0.9rem;
-    border: 1px solid $color_dark;
+    border: 1px solid;
     border-radius: 200px;
     white-space: nowrap;
     width: fit-content;
