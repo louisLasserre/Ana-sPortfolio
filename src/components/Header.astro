@@ -42,6 +42,8 @@ const { back } = Astro.props;
     var open = gsap.timeline();
     open.add("texts");
 
+    open.set(".hambOpen", { display: "grid" });
+
     open.to(".hambOpen", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       delay: 0.1,
@@ -66,12 +68,18 @@ const { back } = Astro.props;
   }
   function closeHamb() {
     console.log("close");
-    gsap.to(".hambOpen", {
+
+    var close = gsap.timeline();
+
+    close.to(".hambOpen", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
       delay: 0.1,
       duration: 0.8,
       ease: ease2,
     });
+
+    close.set(".hambOpen", { display: "none" });
+
     const texts = document.querySelectorAll("[data-anim]");
     texts.forEach((text) => {
       const value = text.attributes["data-anim"].value;

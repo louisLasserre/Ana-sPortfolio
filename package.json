@@ -5,7 +5,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview --host"
   },
   "dependencies": {
     "@ashthornton/asscroll": "^2.0.11",
