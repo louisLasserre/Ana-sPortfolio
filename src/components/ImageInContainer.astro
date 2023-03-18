@@ -1,0 +1,26 @@
+---
+interface Props {
+  image: {
+    src: string;
+    alt?: string;
+  };
+}
+const { image } = Astro.props;
+---
+
+<div class="container-small">
+  <img src={image.src} alt={image.alt ? image.alt : ""} srcset="" />
+</div>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .container-small {
+    margin-top: 8rem;
+    img {
+      width: 100%;
+      max-width: 1200px;
+      object-fit: contain;
+    }
+  }
+</style>

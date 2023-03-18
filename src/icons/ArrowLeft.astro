@@ -1,0 +1,38 @@
+---
+interface Props {
+  mode: "light" | "dark";
+}
+const { mode = "light" } = Astro.props;
+
+let color = "#2C2C2C";
+if (mode === "dark") {
+  color = "#FEFAF4";
+}
+---
+
+<svg
+  width="56"
+  height="56"
+  viewBox="0 0 56 56"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M6.76514 28H48.7652"
+    stroke={color}
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    d="M20.7651 42L6.76514 28L20.7651 14"
+    stroke={color}
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>
+
+<style>
+  svg {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+  }
+</style>

@@ -1,21 +1,21 @@
 ---
-import ArrowLeft from "@assets/svgs/Arrow-left.svg";
+import ArrowLeft from "src/icons/ArrowLeft.astro";
 
-const { back } = Astro.props;
+const { back, mode = "light" } = Astro.props;
 ---
 
-<div class="header">
+<div class={`header ${mode}`}>
   {
     back ? (
       <a href={back}>
-        <img src={ArrowLeft} alt="" />
+        <ArrowLeft mode={mode} />
       </a>
     ) : (
       <div />
     )
   }
 
-  <p class="romie">Anais Akkouche</p>
+  <a class="romie name" href="/">Anais Akkouche</a>
 
   <button class="hamb">
     <div class="trait"></div>
@@ -24,11 +24,13 @@ const { back } = Astro.props;
   </button>
 </div>
 
-<section class="hambOpen romie">
+<section class={`hambOpen romie ${mode}`}>
   <div class="links">
     <a href="/about" class="light headerLink anim" data-delay="0.3">About</a>
     <a href="/works" class="light headerLink anim" data-delay="0.4">Projects</a>
-    <a href="" class="light headerLink anim" data-delay="0.5">Contact me</a>
+    <a href="/#contact" class="light headerLink anim" data-delay="0.5"
+      >Contact me</a
+    >
   </div>
 </section>
 
@@ -38,7 +40,6 @@ const { back } = Astro.props;
   //var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
 
   function openHamb() {
-    console.log("open");
     var open = gsap.timeline();
     open.add("texts");
 
@@ -67,8 +68,6 @@ const { back } = Astro.props;
     });
   }
   function closeHamb() {
-    console.log("close");
-
     var close = gsap.timeline();
 
     close.to(".hambOpen", {
@@ -108,11 +107,22 @@ const { back } = Astro.props;
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @import "../stylesheet/main.scss";
 
   .hambOpen {
-    background-color: $color_dark;
+    &.light {
+      background-color: $color_dark;
+      .links {
+        color: $color_background;
+      }
+    }
+    &.dark {
+      background-color: $color_background;
+      .links {
+        color: $color_dark;
+      }
+    }
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -121,15 +131,12 @@ const { back } = Astro.props;
     place-items: center;
     clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
     .links {
-      color: $color_background;
       font-size: 3rem;
       text-transform: uppercase;
       display: flex;
       align-items: center;
       flex-direction: column;
       gap: 2rem;
-      a {
-      }
     }
   }
 
@@ -144,20 +151,58 @@ const { back } = Astro.props;
     padding-top: 1rem;
     z-index: 20;
 
-    & > p {
+    &.light {
       color: $color_dark;
-      transition: color 0.3s;
-      transition-delay: 0.2s;
+      .hamb {
+        .trait {
+          background-color: $color_dark;
+        }
+      }
     }
-    &.hambOn {
+    &.dark {
+      color: $color_background;
       .hamb {
         .trait {
           background-color: $color_background;
         }
       }
-      & > p {
-        color: $color_background;
+    }
+
+    & > a,
+    .trait,
+    .arrow {
+      transition: color 0.3s, background-color 0.3s;
+      transition-delay: 0.2s;
+    }
+    &.hambOn {
+      &.light {
+        .hamb {
+          .trait {
+            background-color: $color_background;
+          }
+        }
+        & > a {
+          color: $color_background;
+        }
       }
+      &.dark {
+        .hamb {
+          .trait {
+            background-color: $color_dark;
+          }
+        }
+        & > a {
+          color: $color_dark;
+        }
+      }
+    }
+
+    & > div:first-child {
+      width: 2rem;
+    }
+    & > a {
+      //padding: 0.6rem;
+      mix-blend-mode: difference;
     }
 
     .hamb {
@@ -169,7 +214,6 @@ const { back } = Astro.props;
       .trait {
         height: 1px;
         width: 100%;
-        background-color: $color_dark;
         position: absolute;
 
         &:first-child {

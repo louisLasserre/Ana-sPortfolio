@@ -1,16 +1,25 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
+import ButtonOutline from "@components/ButtonOutline.astro";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
 ---
 
 <DefaultLayout>
   <main class="error">
     <section>
       <div class="container">
-        <h1>Uh-oh, we can't seem to find the page you're looking for.</h1>
-        <p>
-          <a href="/">Click here</a> to head back to the safety of the homepage.
-        </p>
+        <h2>Uh-oh, we can't seem to find the page you're looking for.</h2>
+        <p>to head back to the safety of the homepage.</p>
+        <ButtonOutline href="/">Click here</ButtonOutline>
       </div>
     </section>
   </main>
 </DefaultLayout>
+
+<style>
+  h2 {
+    padding-top: 10rem;
+  }
+  p {
+    margin: 1rem 0;
+  }
+</style>

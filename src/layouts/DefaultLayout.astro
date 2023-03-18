@@ -30,6 +30,7 @@ const { back } = Astro.props;
 
 <script>
   import { init } from "@utils/scroll/useScroll";
+  import { redirect } from "@utils/scroll/redirect";
 
   const { gsap, ease1, ease2, asscroll } = init();
 
@@ -41,6 +42,7 @@ const { back } = Astro.props;
 
   window.addEventListener("load", () => {
     const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
+    redirect(asscroll);
 
     gsap.to(".cadre", {
       scrollTrigger: {

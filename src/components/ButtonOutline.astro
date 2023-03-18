@@ -1,11 +1,11 @@
 ---
 interface Props {
-  href: sring;
+  href: string;
 }
 const { href } = Astro.props;
 ---
 
-<a href="" class="button"><slot /></a>
+<a href={href} class="button"><slot /></a>
 
 <style lang="scss">
   @import "../stylesheet/main.scss";

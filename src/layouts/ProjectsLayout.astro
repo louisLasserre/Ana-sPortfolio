@@ -16,7 +16,7 @@ const { back, mode } = Astro.props;
   </head>
 
   <body class="layout">
-    <Header back={back} />
+    <Header back={back} mode={mode === "dark" ? "dark" : "light"} />
     <div class="my-container">
       <main class=`page taches ${mode === "dark" ? 'darkMode' : 'lightMode'}`>
         <div class="taches">

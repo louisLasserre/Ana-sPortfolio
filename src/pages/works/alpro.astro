@@ -1,0 +1,39 @@
+---
+import Hero from "@components/Hero.astro";
+import ImagesColumns from "@components/ImagesColumns.astro";
+import Paragraphe from "@components/Paragraphe.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "ALPRO",
+  lead: "March 2022",
+  line: false,
+};
+
+const tags = ["Packaging", "Art direction", "Branding"];
+
+const paragrapheText = `Here is a personal rebranding project for the brand Alpro. I wanted to give
+    off a more simple and modern version of the packaging.<br> I worked on the logo,
+    the typography, the colors while respecting the original feel of the brand.`;
+
+const imagesColumns = [
+  {
+    src: "/images/alpro/alpro1.png",
+    alt: "image de mockup pour la marque alpro",
+  },
+  {
+    src: "/images/alpro/alpro2.png",
+    alt: "image de mockup pour la marque alpro",
+  },
+];
+---
+
+<ProjectsLayout mode="dark" back="/works">
+  <Hero {...heroProps}>
+    <TagsBarre tags={tags} />
+  </Hero>
+  <Paragraphe text={paragrapheText} />
+  <ImagesColumns imgs={imagesColumns} />
+</ProjectsLayout>

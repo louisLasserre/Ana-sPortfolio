@@ -1,0 +1,43 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import Paragraphe from "@components/Paragraphe.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "MUSÉE DE <br> L'IMPRIMERIE <br> DE NANTES",
+  lead: "October 2022",
+  line: false,
+  ta: "left",
+};
+
+const tags = ["ux ui design", "web design", "programming", "audit"];
+const textColumnsL =
+  "In November 2022, we had to redesign a museum’s website. The original website didn’t have any useful information, it wasn’t user friendly and lacked design.<br><br>We spent 3 weeks working on this project, from design to programming. We went for a premium design that does justice to the subject - prinery.";
+
+const textColumnsR =
+  "In order to achieve the premium feel we went for a darker color palette, combining blacks, greys and gold. As well as big calligraphy letters across the whole website ";
+const citation = `CALLIGRAPHY IS A UNIQUE FORM OF ART THAT CONVEYS EMOTIONS AND MESSAGES. IT SHOULD BE DONE RIGHT.`;
+---
+
+<ProjectsLayout back="/works">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+  <ImageInContainer
+    image={{ src: "/images/musee/mockup.png", alt: "mockup du site internet" }}
+  />
+  <TextColumns left={textColumnsL} right={textColumnsR} />
+  <ImageFull image={{ src: "/images/musee/mockup2.png" }} />
+  <Citation text={citation} />
+  <ImageThreeColumns
+    imgs={[
+      { src: "/images/musee/design1.png", alt: "design du site réalisé" },
+      { src: "/images/musee/design2.png", alt: "design du site réalisé" },
+      { src: "/images/musee/design3.png", alt: "design du site réalisé" },
+    ]}
+  />
+</ProjectsLayout>

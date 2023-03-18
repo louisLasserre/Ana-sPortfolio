@@ -1,11 +1,25 @@
 ---
-const { title, lead, description, line, size } = Astro.props;
+interface Props {
+  title: string;
+  ta?: "left" | "center" | "right";
+  lead?: string;
+  description?: string;
+  line?: boolean;
+  size?: "small";
+}
+
+const { title, ta = "center", lead, description, line, size } = Astro.props;
+let maw = "auto";
+if (ta === "left") {
+  maw = "70%";
+}
+const taStyle = `text-align: ${ta}; max-width: ${maw};`;
 ---
 
 <section class={size === "small" ? "container-small" : "container"}>
   <div class="hero">
     <article>
-      <h1 class="pageTitle" set:html={title} data-delay="0.1" />
+      <h1 class="pageTitle" set:html={title} data-delay="0.1" style={taStyle} />
       <p class="pageTitle" data-delay="0.3">
         {lead}
       </p>
@@ -30,6 +44,9 @@ const { title, lead, description, line, size } = Astro.props;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 10rem;
+    h1 {
+      margin: 0 auto;
+    }
     p {
       margin-top: 2rem;
       font-weight: 300;
