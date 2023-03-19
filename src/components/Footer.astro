@@ -21,7 +21,7 @@
     <div class="column maj medium">
       <a href="/about" class="anim">about</a>
       <a href="/works" class="anim">projects</a>
-      <a href="/#contact" id="actionContact" class="anim">contact me</a>
+      <a href="/#contact" id="actionContact" class="anim" contact>contact me</a>
     </div>
 
     <div class="column medium">
@@ -33,6 +33,12 @@
     </div>
   </div>
 </footer>
+
+<script>
+  import { onClickTo } from "@utils/scroll/redirect";
+
+  onClickTo("contact");
+</script>
 
 <style lang="scss">
   @import "../stylesheet/main.scss";

@@ -4,7 +4,7 @@ import "../stylesheet/main.scss";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
-const { back } = Astro.props;
+const { back, page = "index" } = Astro.props;
 ---
 
 <html lang="fr">
@@ -18,7 +18,7 @@ const { back } = Astro.props;
   <body class="layout">
     <Header back={back} />
     <div class="my-container">
-      <main class="page taches">
+      <main class={`page ${page}`}>
         <div class="taches">
           <slot />
           <Footer />
@@ -85,10 +85,18 @@ const { back } = Astro.props;
     background-image: url("/images/GRAIN.png");
   }
   .page {
-    background-image: url("/images/fond-test-accueil.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-color: $color_background;
+  }
+  .index {
+    background-image: url("/images/fond-test-accueil.png");
+  }
+  .about {
+    background-image: url("/images/fond-about.png");
+  }
+  .work {
+    background-image: url("/images/fond-work.png");
   }
 </style>

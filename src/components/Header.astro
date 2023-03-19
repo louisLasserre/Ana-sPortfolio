@@ -28,22 +28,29 @@ const { back, mode = "light" } = Astro.props;
   <div class="links">
     <a href="/about" class="light headerLink anim" data-delay="0.3">About</a>
     <a href="/works" class="light headerLink anim" data-delay="0.4">Projects</a>
-    <a href="/#contact" class="light headerLink anim" data-delay="0.5"
+    <a href="/#contact" contact class="light headerLink anim" data-delay="0.5"
       >Contact me</a
     >
   </div>
 </section>
 
 <script>
+  import { onClickTo } from "@utils/scroll/redirect";
   import { scrollInstance } from "@utils/scroll/useScroll";
   const { gsap, ease1, ease2 } = scrollInstance();
+
+  onClickTo("contact");
   //var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
 
   function openHamb() {
     var open = gsap.timeline();
+    open.resume();
     open.add("texts");
 
-    open.set(".hambOpen", { display: "grid" });
+    open.set(".hambOpen", {
+      display: "grid",
+      pointerEvents: "all",
+    });
 
     open.to(".hambOpen", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -66,6 +73,8 @@ const { back, mode = "light" } = Astro.props;
         "texts"
       );
     });
+
+    hambStatus = true;
   }
   function closeHamb() {
     var close = gsap.timeline();
@@ -76,8 +85,9 @@ const { back, mode = "light" } = Astro.props;
       duration: 0.8,
       ease: ease2,
     });
+    console.log(hambStatus);
 
-    close.set(".hambOpen", { display: "none" });
+    close.set(".hambOpen", { pointerEvents: "none" });
 
     const texts = document.querySelectorAll("[data-anim]");
     texts.forEach((text) => {
@@ -85,6 +95,8 @@ const { back, mode = "light" } = Astro.props;
 
       text.classList.remove(value);
     });
+
+    hambStatus = false;
   }
 
   let hambStatus = false;
@@ -94,13 +106,11 @@ const { back, mode = "light" } = Astro.props;
 
   if (burger) {
     burger.addEventListener("click", (e) => {
-      hambStatus = !hambStatus;
       header.classList.toggle("hambOn");
-
-      if (hambStatus == true) {
+      if (hambStatus == false) {
         return openHamb();
       }
-      if (hambStatus == false) {
+      if (hambStatus == true) {
         return closeHamb();
       }
     });

@@ -1,0 +1,62 @@
+---
+import Instagram from "src/icons/Instagram.astro";
+import ButtonOutline from "./ButtonOutline.astro";
+
+interface Props {
+  left: string;
+  right: string;
+  social?: {
+    type: "insta";
+    href: string;
+  };
+  button: {
+    text: string;
+    href: string;
+  };
+}
+
+const { left, right, social, button } = Astro.props;
+---
+
+<section class="container-small grid textTwoColumnsCta">
+  <p set:html={left} is-inview="fromLowB" />
+  <div class="right">
+    <p set:html={right} is-inview="fromLowB" />
+
+    <div class="btnContainer" is-inview="fromLowB">
+      {
+        social && (
+          <a href={social.href}>
+            <Instagram />
+          </a>
+        )
+      }
+      <ButtonOutline href={button.href}>{button.text}</ButtonOutline>
+    </div>
+  </div>
+</section>
+
+<style lang="scss" is:global>
+  @import "../stylesheet/main.scss";
+  .textTwoColumnsCta {
+    padding-top: 6rem;
+    font-weight: 300;
+    &.grid {
+      display: grid;
+      column-gap: 3rem;
+      grid-template-columns: 1fr 1fr;
+      .right {
+        text-align: right;
+        display: grid;
+        flex-direction: column;
+        .btnContainer {
+          justify-self: flex-end;
+          display: flex;
+          align-items: flex-end;
+          margin-right: auto;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+</style>

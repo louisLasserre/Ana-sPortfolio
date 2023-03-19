@@ -12,25 +12,29 @@ import PremierePro from "@assets/icons/PremierePro.svg";
 <div class="container-small">
   <div class="grid">
     <article>
-      <h2>My skills</h2>
+      <h2 is-inview="fromB">My skills</h2>
       <ul>
-        <li>ART DIRECTION</li>
-        <li>UI-IX DESIGN</li>
-        <li>BRANDING</li>
-        <li>EDITORIAL</li>
-        <li>PACKAGING</li>
+        <li is-inview="fromB">ART DIRECTION</li>
+        <li is-inview="fromB">UI-IX DESIGN</li>
+        <li is-inview="fromB">BRANDING</li>
+        <li is-inview="fromB">EDITORIAL</li>
+        <li is-inview="fromB">PACKAGING</li>
       </ul>
     </article>
     <div class="images">
-      <div class="imgContainer"><img src="/images/ordis.png" alt="" /></div>
-      <div class="imgContainer"><img src="/images/livres.png" alt="" /></div>
+      <div class="imgContainer" is-inview="fromB">
+        <img src="/images/ordis.png" alt="" />
+      </div>
+      <div class="imgContainer" is-inview="fromB">
+        <img src="/images/livres.png" alt="" />
+      </div>
     </div>
 
-    <div class="buttonContainer">
+    <div class="buttonContainer" is-inview="fromB">
       <ButtonOutline href="/works">Discover my work</ButtonOutline>
     </div>
 
-    <div class="icons">
+    <div class="icons" is-inview="fromB">
       <img src={AdobeIllustrate} alt="" />
       <img src={AdobeInDesign} alt="" />
       <img src={AdobePhotoshop} alt="" />

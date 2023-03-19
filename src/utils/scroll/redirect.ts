@@ -13,9 +13,29 @@ export function redirect(asscroll: ASScroll) {
     return
   }
   const data = target.getBoundingClientRect()
-  console.log(data, target);
+
   asscroll.scrollTo(data.top)
 
 
+
+}
+
+export function onClickTo(id: string) {
+
+  const elements = document.querySelectorAll(`[${id}]`);
+
+  if (!elements) {
+    return
+  }
+  elements.forEach((element) => element.addEventListener('click', (e) => {
+    e.preventDefault()
+
+
+    window.location.href = `/#${id}`
+
+    location.reload()
+
+
+  }))
 
 }

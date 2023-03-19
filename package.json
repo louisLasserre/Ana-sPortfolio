@@ -13,6 +13,7 @@
     "gsap": "^3.11.4"
   },
   "devDependencies": {
+    "@types/node": "^18.15.3",
     "astro": "^2.0.14",
     "sass": "^1.59.2"
   }

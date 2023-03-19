@@ -1,13 +1,15 @@
 ---
 interface Props {
   text: string;
+  title?: string;
 }
 
-const { text } = Astro.props;
+const { text, title } = Astro.props;
 ---
 
 <section class="container-small">
-  <p set:html={text} />
+  <h2 is-inview="fromB">{title}</h2>
+  <p set:html={text} is-inview="fromB" />
 </section>
 
 <style lang="scss">
@@ -15,7 +17,13 @@ const { text } = Astro.props;
 
   .container-small {
     margin-top: 6rem;
-    line-height: 2rem;
+    line-height: 1.4rem;
     font-weight: 300;
+
+    h2 {
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      font-family: $font_medium;
+    }
   }
 </style>

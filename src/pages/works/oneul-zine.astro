@@ -1,0 +1,76 @@
+---
+import Citation from "@components/Citation.astro";
+import GridImages from "@components/GridImages.astro";
+import Hero from "@components/Hero.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+
+import Paragraphe from "@components/Paragraphe.astro";
+
+import TagsBarre from "@components/TagsBarre.astro";
+import TextTwoColumnsCta from "@components/TextTwoColumnsCta.astro";
+
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "ONEUL ZINE",
+  lead: "January 2021",
+  line: false,
+  ta: "center",
+};
+
+const tags = [
+  "branding",
+  "art direction",
+  "ux-ui design",
+  "print",
+  "social media",
+];
+const paragrapheText =
+  "For the release of our first mini issue “Today” in February 2022, we went for something pretty organic and youthful.  The goal of this issue was to allow people to be spontaneous and capture the present moment.<br><br> I designed a few spreads exposed above.<br><br> Ranging from interviews to editorial photoshoots and designs, we were able to do a mini-issue that we’re proud of.";
+
+const socialMediaText =
+  "I was the Head of Social media for a year. I created a new strategy to organically reach our targets : artists that want to be seen & young people that want to support them.  In order to grow the community, I decided to go for aesthetically pleasing visuals and videos (reels & tiktoks). We also collaborated with other creators to gain some visibility on different but interesting niches. In a year, we gained more than 3K followers.  ";
+const websiteText =
+  "Created on Squarespace, our goal here is to illustrate the feel and mood of each magazine issue being curated.<br> Each page embodies the theme of the issue. This website is the platform where users could purchase the magazine, sign up to the newsletter and read the articles and interviews written by our writers.";
+const textTwoColumnsCta = {
+  left: "Oneul Zine is and independant digital and paper magazine founded in 2020, based in Toronto.<br><br> Its goal is to allow young creatives all around the world to have access to a platform to put forward their art and gain more visibility.<br><br>  I have been the Co-Editor in Chief and Head of Social Media since January 2021.<br><br>  From team management to design, I have been involved with every aspect of the Zine. ",
+  right:
+    "Working closely with the Founder and Editor-in-Chief allowed me to build a positive and huge growth to my professional experience.<br><br> Thanks to this I worked on being more independant as well as managing a team of 10 people.",
+  social: {
+    type: "insta",
+    href: "https://www.instagram.com/oneulzine/",
+  },
+  button: {
+    href: "https://theoneulzine.com/",
+    text: "Visit Website",
+  },
+};
+---
+
+<ProjectsLayout back="/works">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+  <TextTwoColumnsCta {...textTwoColumnsCta} />
+  <Paragraphe text={paragrapheText} title="MAGAZINE" />
+  <ImageInContainer image={{ src: "/images/oneul-zine/cover.png" }} />
+  <Citation
+    text="INNOCENCE AND YOUTH ARE TO BE CHERISHED AND LOVED. TRY TO MAKE THE BEST OF IT."
+  />
+  <ImageInContainer image={{ src: "/images/oneul-zine/mockup.png" }} />
+  <Paragraphe text={socialMediaText} title="SOCIAL MEDIA" />
+  <GridImages
+    columns={2}
+    rowGap={0}
+    columnGap={8}
+    images={[
+      { src: "/images/oneul-zine/grid1.png" },
+      { src: "/images/oneul-zine/grid2.png" },
+      { src: "/images/oneul-zine/grid3.png" },
+      { src: "/images/oneul-zine/grid4.png" },
+      { src: "/images/oneul-zine/grid5.png" },
+    ]}
+  />
+  <Paragraphe text={websiteText} title="WEBSITE" />
+  <Citation
+    text="FINDING JOY IN THE LITTLE MOMENTS - THAT’S WHAT LIFE IS REALLY ABOUT."
+  />
+</ProjectsLayout>

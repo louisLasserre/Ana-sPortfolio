@@ -41,6 +41,11 @@ $bezier: cubic-bezier(0.165, 0.84, 0.44, 1);
     animation-duration: 1.8s;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
+  &.inview.fromLowB, &.anim.fromLowB {
+    animation-name: fromLowB;
+    animation-duration: 1.8s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 @keyframes fromB{
@@ -50,6 +55,20 @@ $bezier: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   20% {
     transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fromLowB{
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(50%);
     opacity: 0;
   }
   100% {
