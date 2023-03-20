@@ -13,12 +13,12 @@ const { title, text, img } = Astro.props;
 <section class="my-vision">
   <div class="container-small">
     <article class="column">
-      <h2>{title}</h2>
+      <h2 is-inview="fromB">{title}</h2>
 
-      <p set:html={text} />
+      <p set:html={text} is-inview="fromLowB" />
     </article>
     <div class="column">
-      <div class="imgContainer">
+      <div class="imgContainer" is-inview="fromLowB">
         <img src={img.src} alt={img.alt} srcset="" />
       </div>
     </div>

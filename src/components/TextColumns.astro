@@ -3,8 +3,8 @@ const { left, right } = Astro.props;
 ---
 
 <div class="container-small">
-  <p set:html={left} />
-  <p set:html={right} />
+  <p set:html={left} is-inview="fromB" />
+  <p set:html={right} is-inview="fromB" />
 </div>
 
 <style lang="scss">

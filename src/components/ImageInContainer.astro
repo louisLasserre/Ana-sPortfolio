@@ -8,7 +8,7 @@ interface Props {
 const { image } = Astro.props;
 ---
 
-<div class="container-small">
+<div class="container-small" is-inview="fromLowB">
   <img src={image.src} alt={image.alt ? image.alt : ""} srcset="" />
 </div>
 

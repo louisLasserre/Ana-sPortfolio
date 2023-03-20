@@ -32,8 +32,11 @@ export function onClickTo(id: string) {
 
 
     window.location.href = `/#${id}`
+    if(window.location.pathname === '/') {
 
-    location.reload()
+      location.reload()
+    }
+
 
 
   }))

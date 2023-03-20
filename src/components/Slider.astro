@@ -1,0 +1,224 @@
+---
+import PrevSlide from "src/icons/PrevSlide.astro";
+import NextSlide from "src/icons/NextSlide.astro";
+---
+
+<section class="container-small sliderContainer">
+  <div class="slider slider--fullscreen">
+    <nav class="slider__nav">
+      <button title="Go to the previous slide" data-prev><PrevSlide /></button>
+      <button title="Go to the next slide" data-next><NextSlide /></button>
+    </nav>
+
+    <div class="slider__slides" data-slider>
+      <figure class="slider__slide">
+        <img src="/images/oneul-zine/slide1.png" alt="" />
+      </figure>
+      <figure class="slider__slide">
+        <img src="/images/oneul-zine/slide2.png" alt="" />
+      </figure>
+      <figure class="slider__slide">
+        <img src="/images/oneul-zine/slide3.png" alt="" />
+      </figure>
+    </div>
+
+    <div class="slider__btns">
+      <button
+        title="move to slide 1"
+        data-sliderId="0"
+        class="slider__btn active"></button>
+      <button title="move to slide 2" data-sliderId="1" class="slider__btn"
+      ></button>
+      <button title="move to slide 3" data-sliderId="2" class="slider__btn"
+      ></button>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  /* Base */
+  .sliderContainer {
+    padding-top: 6rem;
+  }
+
+  .slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .slider__slides {
+    max-height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    gap: 3rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+  }
+
+  .slider__slide {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slider__slide > img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Navigation */
+  .slider__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .slider__nav > button {
+    padding: 1rem;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center center;
+    pointer-events: initial;
+  }
+
+  .slider__nav > button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  .slider__btns {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .slider__btn {
+      border-radius: 50%;
+      background-color: $color_dark;
+      border: 2px solid $color_dark;
+      width: 0.8rem;
+      cursor: pointer;
+      aspect-ratio: 1;
+
+      &.active {
+        background-color: $color_background;
+        border: 2px solid $color_dark;
+      }
+    }
+  }
+
+  /* Modifiers */
+</style>
+
+<script>
+  const slider = document.querySelector("[data-slider]") as HTMLElement;
+  const prevButton = document.querySelector("[data-prev]") as HTMLElement;
+  const nextButton = document.querySelector("[data-next]") as HTMLElement;
+
+  const sliderBtns = document.querySelector(".slider__btns") as HTMLElement;
+  const slides = document.querySelector(".slider__slides") as HTMLElement;
+  const nbrSlides = slides.childElementCount;
+
+  let sliderPosition = 0;
+
+  function slide(direction: "prev" | "next") {
+    let left;
+    const { scrollLeft, clientWidth } = slider;
+
+    let sliderPosition = Math.floor(scrollLeft / clientWidth);
+
+    switch (direction) {
+      case "prev":
+        if (sliderPosition == 0) {
+          return slideTo(nbrSlides - 1);
+        }
+        setActiveSliderBtn(sliderPosition - 1);
+
+        left = scrollLeft - clientWidth;
+        break;
+      case "next":
+        if (sliderPosition == nbrSlides - 1) {
+          return slideTo(0);
+        }
+        setActiveSliderBtn(sliderPosition + 1);
+
+        left = scrollLeft + clientWidth;
+        break;
+
+      default:
+        left = scrollLeft + clientWidth;
+        break;
+    }
+
+    slider.scroll({
+      left,
+      behavior: "smooth",
+    });
+  }
+
+  function slideTo(targetPosition: number) {
+    const { scrollLeft, clientWidth } = slider;
+
+    let sliderPosition = Math.floor(scrollLeft / clientWidth);
+
+    let numberToMove = targetPosition - sliderPosition;
+    if (numberToMove == 0) {
+      return;
+    }
+    if (numberToMove < 0) {
+      numberToMove = numberToMove + 2 * numberToMove;
+    }
+    const move = scrollLeft + numberToMove * clientWidth;
+    setActiveSliderBtn(targetPosition);
+
+    slider.scroll({
+      left: move,
+      behavior: "smooth",
+    });
+  }
+
+  if (slider && prevButton && nextButton) {
+    prevButton.addEventListener("click", () => slide("prev"));
+    nextButton.addEventListener("click", () => slide("next"));
+  }
+
+  function setActiveSliderBtn(target: number) {
+    const prevActiveBtn: HTMLButtonElement | null = document.querySelector(
+      ".slider__btn.active"
+    );
+    const nextActiveBtn: HTMLButtonElement | null = document.querySelector(
+      `[data-sliderId='${target}']`
+    );
+
+    if (prevActiveBtn) {
+      prevActiveBtn.classList.toggle("active");
+    }
+
+    nextActiveBtn.classList.toggle("active");
+  }
+
+  sliderBtns.addEventListener("click", (e) => {
+    if (e?.target?.classList?.contains("slider__btn")) {
+      slideTo(e.target.dataset.sliderid);
+    }
+  });
+</script>

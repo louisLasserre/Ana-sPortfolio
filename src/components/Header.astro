@@ -18,9 +18,9 @@ const { back, mode = "light" } = Astro.props;
   <a class="romie name" href="/">Anais Akkouche</a>
 
   <button class="hamb">
-    <div class="trait"></div>
-    <div class="trait"></div>
-    <div class="trait"></div>
+    <div class="trait trait-top"></div>
+    <div class="trait trait-middle"></div>
+    <div class="trait trait-bottom"></div>
   </button>
 </div>
 
@@ -37,13 +37,37 @@ const { back, mode = "light" } = Astro.props;
 <script>
   import { onClickTo } from "@utils/scroll/redirect";
   import { scrollInstance } from "@utils/scroll/useScroll";
+  const burgerTop = document.querySelector(".trait-top");
+  const burgerMid = document.querySelector(".trait-middle");
+  const burgerBot = document.querySelector(".trait-bottom");
+  const burgerWhole = document.querySelector(".trait-bottom");
+
   const { gsap, ease1, ease2 } = scrollInstance();
 
   onClickTo("contact");
   //var test = CustomEase.create("superEase", "M0,0 C0.496,0.004 0,1 1,1");
 
+  const burgerTl = gsap.timeline({ paused: true, reversed: true });
+  burgerTl.timeScale(3);
+  burgerTl
+    .to(burgerTop, {
+      y: 11,
+      yoyo: true,
+      ease: "easeInOut",
+      duration: 0.7,
+    })
+    .to(
+      burgerBot,
+      { y: -11, yoyo: true, ease: "easeInOut", duration: 0.7 },
+      "-=0.7"
+    )
+    .to(burgerTop, { rotation: 45, duration: 1 })
+    .to(burgerMid, { rotation: 45, duration: 1 }, "-=1")
+    .to(burgerBot, { rotation: 135, duration: 1 }, "-=1");
+
   function openHamb() {
     var open = gsap.timeline();
+    burgerTl.play();
     open.resume();
     open.add("texts");
 
@@ -78,6 +102,7 @@ const { back, mode = "light" } = Astro.props;
   }
   function closeHamb() {
     var close = gsap.timeline();
+    burgerTl.reverse();
 
     close.to(".hambOpen", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",

@@ -12,7 +12,7 @@ const { imgs } = Astro.props;
   <div class="grid">
     {
       imgs.map((img) => (
-        <div class="imgContainer">
+        <div class="imgContainer" is-inview="fromLowB">
           <img src={img.src} alt={img.alt} srcset="" />
         </div>
       ))

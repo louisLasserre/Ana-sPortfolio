@@ -5,6 +5,7 @@ import Hero from "@components/Hero.astro";
 import ImageInContainer from "@components/ImageInContainer.astro";
 
 import Paragraphe from "@components/Paragraphe.astro";
+import Slider from "@components/Slider.astro";
 
 import TagsBarre from "@components/TagsBarre.astro";
 import TextTwoColumnsCta from "@components/TextTwoColumnsCta.astro";
@@ -50,6 +51,7 @@ const textTwoColumnsCta = {
 <ProjectsLayout back="/works">
   <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
   <TextTwoColumnsCta {...textTwoColumnsCta} />
+  <Slider />
   <Paragraphe text={paragrapheText} title="MAGAZINE" />
   <ImageInContainer image={{ src: "/images/oneul-zine/cover.png" }} />
   <Citation

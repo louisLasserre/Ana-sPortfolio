@@ -13,7 +13,7 @@ const { imgs } = Astro.props;
     {
       imgs.map((img) => (
         <div class="imgContainer">
-          <img src={img.src} alt={img.alt} srcset="" />
+          <img src={img.src} alt={img.alt} srcset="" is-inview="fromLowB" />
         </div>
       ))
     }
