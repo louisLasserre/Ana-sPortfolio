@@ -7,7 +7,7 @@ const { back, mode = "light" } = Astro.props;
 <div class={`header ${mode}`}>
   {
     back ? (
-      <a href={back}>
+      <a href={back} title="go back">
         <ArrowLeft mode={mode} />
       </a>
     ) : (
@@ -17,7 +17,7 @@ const { back, mode = "light" } = Astro.props;
 
   <a class="romie name" href="/">Anais Akkouche</a>
 
-  <button class="hamb">
+  <button class="hamb" title="toggle navigation menu">
     <div class="trait trait-top"></div>
     <div class="trait trait-middle"></div>
     <div class="trait trait-bottom"></div>
