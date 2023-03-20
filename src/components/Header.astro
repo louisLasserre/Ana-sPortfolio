@@ -241,7 +241,7 @@ const { back, mode = "light" } = Astro.props;
     }
 
     .hamb {
-      width: 2rem;
+      width: 40px;
       height: 1rem;
       position: relative;
       z-index: 20;
@@ -249,7 +249,8 @@ const { back, mode = "light" } = Astro.props;
       .trait {
         height: 1px;
         width: 100%;
-        position: absolute;
+        margin-top: 10px;
+        transform-origin: 50% 50%;
 
         &:first-child {
           top: 0;
