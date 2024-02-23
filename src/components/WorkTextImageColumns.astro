@@ -2,16 +2,17 @@
 interface Props {
   title: string;
   text: string;
+  imgLeft?: boolean
   img: {
     src: string;
     alt?: string;
   };
 }
-const { title, text, img } = Astro.props;
+const { title, text, img, imgLeft } = Astro.props;
 ---
 
 <section class="my-vision">
-  <div class="container-small">
+  <div class=`container-small ${imgLeft ? 'invert' : ''}`>
     <article class="column">
       <h2 is-inview="fromB">{title}</h2>
 
@@ -32,6 +33,9 @@ const { title, text, img } = Astro.props;
       justify-content: space-between;
       align-items: flex-start;
       gap: 10%;
+      &.invert {
+        flex-direction: row-reverse;
+      }
 
       @media (max-width: $from_small) {
         flex-direction: column;

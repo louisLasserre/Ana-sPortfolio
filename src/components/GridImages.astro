@@ -17,8 +17,8 @@ const style = `grid-template-columns: repeat(${columns}, 1fr); row-gap: ${rowGap
 <section class="container-small">
   <div class="grid" style={style}>
     {
-      images.map((img) => (
-        <div class="imgContainer" is-inview="fromB">
+      images.map((img, index) => (
+        <div class="imgContainer" is-inview="fromB" data-delay={index / 10}>
           <img src={img.src} alt={img.alt ? img.alt : ""} />
         </div>
       ))

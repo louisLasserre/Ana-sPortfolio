@@ -4,7 +4,6 @@ import Hero from "@components/Hero.astro";
 import ImageFull from "@components/ImageFull.astro";
 import ImageInContainer from "@components/ImageInContainer.astro";
 import ImageThreeColumns from "@components/ImageThreeColumns.astro";
-import Paragraphe from "@components/Paragraphe.astro";
 import TagsBarre from "@components/TagsBarre.astro";
 import TextColumns from "@components/TextColumns.astro";
 import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
@@ -13,7 +12,8 @@ const heroProps = {
   title: "MUSÉE DE <br> L'IMPRIMERIE <br> DE NANTES",
   lead: "October 2022",
   line: false,
-  ta: "left",
+  ta: "center",
+  lh: "1.2",
 };
 
 const tags = ["ux ui design", "web design", "programming", "audit"];
@@ -25,7 +25,7 @@ const textColumnsR =
 const citation = `CALLIGRAPHY IS A UNIQUE FORM OF ART THAT CONVEYS EMOTIONS AND MESSAGES. IT SHOULD BE DONE RIGHT.`;
 ---
 
-<ProjectsLayout back="/works">
+<ProjectsLayout back="/works" pageTitle="Museum">
   <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
   <ImageInContainer
     image={{ src: "/images/musee/mockup.png", alt: "mockup du site internet" }}

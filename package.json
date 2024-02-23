@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@ashthornton/asscroll": "^2.0.11",
-    "@directus/sdk": "10.1.4",
-    "gsap": "^3.11.4"
+    "@directus/sdk": "15.0.1",
+    "gsap": "^3.12.5"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
-    "astro": "^2.0.14",
-    "sass": "^1.59.2"
+    "@types/node": "^20.11.20",
+    "astro": "^4.4.3",
+    "sass": "^1.71.1"
   }
 }

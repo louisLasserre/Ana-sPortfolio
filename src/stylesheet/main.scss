@@ -19,8 +19,27 @@ img {
   user-select: none;
 }
 
+.pageTitle {
+  opacity: 0;
+  animation: pageTitleAnim 0.8s forwards;
+
+}
+
+
 
 html, body {
   width: 100vw;
   overflow-x: hidden;
+}
+
+
+@keyframes pageTitleAnim {
+  from {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }

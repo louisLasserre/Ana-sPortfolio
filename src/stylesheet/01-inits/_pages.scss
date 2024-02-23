@@ -75,7 +75,7 @@ body {
 
 	@media (min-width: $from_medium) {
 		width: 82vw;
-		max-width: 1200px;
+		max-width: 1300px;
 	}
 
 	@media (min-width: $from_gigantic) {
@@ -95,9 +95,8 @@ section {
 
 p.stylable {
   span {
-    font-family: $font_italic;
-    font-style: italic;
-    font-weight: 400;
+    font-family: $font_medium;
+
   }
 }
 

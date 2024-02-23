@@ -6,14 +6,15 @@ interface Props {
   description?: string;
   line?: boolean;
   size?: "small";
+  lh?: string;
 }
 
-const { title, ta = "center", lead, description, line, size } = Astro.props;
+const { title, ta = "center", lead, description, line, size, lh } = Astro.props;
 let maw = "auto";
 if (ta === "left") {
   maw = "70%";
 }
-const taStyle = `text-align: ${ta}; max-width: ${maw};`;
+const taStyle = `text-align: ${ta}; max-width: ${maw}; line-height: ${lh}`;
 ---
 
 <section class={size === "small" ? "container-small" : "container"}>

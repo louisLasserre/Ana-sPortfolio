@@ -1,0 +1,54 @@
+---
+
+export interface Props {
+  paragraphes: string[]
+}
+
+const { paragraphes } = Astro.props
+
+let middle = Math.ceil(paragraphes.length / 2)
+
+const leftPart = paragraphes.slice(0, middle)
+const rightPart = paragraphes.slice(middle)
+
+
+const newArray = leftPart.reduce((acc, leftText, i) => {
+  const righText = rightPart[i]
+
+  if (righText) {
+    acc.push(...[leftText, rightPart[i]])
+    return acc
+  }
+  acc.push(leftText)
+  return acc
+}, [] as string[])
+
+---
+
+
+<div class="container-small sides-grid">
+
+    {newArray.map((text) => <p is-inview="fromB" class="side-paragraphe stylable" set:html={text}></p>)}
+
+
+
+</div>
+
+
+<style lang="scss">
+  @import "../stylesheet/main.scss";
+
+  .sides-grid {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    column-gap: 10%;
+    row-gap: 20px;
+
+  }
+
+  .container-small {
+    margin-top: 6rem;
+    line-height: 1.4rem;
+    font-weight: 300;
+  }
+</style>

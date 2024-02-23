@@ -16,7 +16,7 @@ const { data } = Astro.props;
         const { imgUrl, name, link } = singleData;
 
         return (
-          <div class="img-3 cadre" is-inview="fromLowB" data-delay={index}>
+          <div class="img-3 cadre" is-inview="fromLowB" data-delay={index / 10}>
             <a href={link}>
               <div class="img-container">
                 <img src={imgUrl} alt="" />

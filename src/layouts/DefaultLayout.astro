@@ -3,21 +3,30 @@ import "../stylesheet/main.scss";
 
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Seo from "@components/Seo.astro";
 
-const { back, page = "index" } = Astro.props;
+const { back, page = "index", pageTitle } = Astro.props;
+
+const seoProps = {
+  title: "Anaïs Akkouche",
+  ogDescription: "ux/ui designer & art direction | discover my work",
+  description:
+    "Discover me and my work, I love art direction, branding, design and photography, I am passionate about creating designs that convey feelings and messages",
+  image: "/images/seo-thumbnail.png",
+  typeof: "website",
+  author: "Louis LASSERRE",
+  pageTitle,
+};
 ---
 
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Anaïs Akkouche - Portfolio</title>
+
     <link rel="shortcut icon" href="/favicon.ico" />
-    <meta
-      name="description"
-      content="Welcome to my website, discover me and my projects"
-    />
-    <meta name="author" content="Louis LASSERRE" />
+    <Seo {...seoProps} />
+
     <meta
       property="og:description"
       content="See my portfolio to discover who I am"
@@ -35,78 +44,85 @@ const { back, page = "index" } = Astro.props;
         </div>
       </main>
     </div>
+    <script>
+      import { init } from "@utils/scroll/useScroll";
+      import { redirect } from "@utils/scroll/redirect";
+
+      const { gsap, ease1, ease2, asscroll } = init();
+
+      function toggleClasses(elmt: HTMLElement) {
+        const attribute = elmt.attributes["is-inview"].value;
+        const delay = elmt.attributes["data-delay"].value;
+
+        if (delay) {
+          elmt.style.animationDelay = delay + "s";
+        }
+
+        elmt.classList.add("inview", attribute);
+      }
+
+      window.addEventListener("load", () => {
+        const totalScroll =
+          asscroll.containerElement.scrollHeight - innerHeight;
+        redirect(asscroll);
+
+        gsap.to(".cadre", {
+          scrollTrigger: {
+            pin: false,
+            scrub: 0.2,
+            trigger: ".parallax",
+            start: "top 95%",
+            end: "bottom top",
+          },
+          y: (i, target) => -totalScroll * target.dataset.speed,
+          ease: "none",
+        });
+
+        const elements: string[] = gsap.utils.toArray("[is-inview]");
+        elements.forEach((elmt: string) => {
+          gsap.to(elmt, {
+            scrollTrigger: {
+              trigger: elmt,
+              start: "top 100%",
+              end: "top top",
+              onEnter: (elmt) => toggleClasses(elmt.trigger),
+              once: true,
+            },
+          });
+        });
+
+        const pageTitles = document.querySelectorAll(".pageTitle");
+        pageTitles.forEach((element) => {
+          if (!element) {
+            return;
+          }
+          const delay = element.dataset.delay;
+          element.style.animationDelay = `${delay}s`;
+        });
+      });
+    </script>
+
+    <style lang="scss">
+      @import "../stylesheet/main.scss";
+
+      .taches {
+        background-image: url("/images/GRAIN.png");
+      }
+      .page {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-color: $color_background;
+      }
+      .index {
+        background-image: url("/images/fond-test-accueil.png");
+      }
+      .about {
+        background-image: url("/images/fond-about.png");
+      }
+      .work {
+        background-image: url("/images/fond-work.png");
+      }
+    </style>
   </body>
 </html>
-
-<script>
-  import { init } from "@utils/scroll/useScroll";
-  import { redirect } from "@utils/scroll/redirect";
-
-  const { gsap, ease1, ease2, asscroll } = init();
-
-  function toggleClasses(elmt: HTMLElement) {
-    const attribute = elmt.attributes["is-inview"].value;
-
-    elmt.classList.add("inview", attribute);
-  }
-
-  window.addEventListener("load", () => {
-    const totalScroll = asscroll.containerElement.scrollHeight - innerHeight;
-    redirect(asscroll);
-
-    gsap.to(".cadre", {
-      scrollTrigger: {
-        pin: false,
-        scrub: 0.2,
-        trigger: ".parallax",
-        start: "top 95%",
-        end: "bottom top",
-      },
-      y: (i, target) => -totalScroll * target.dataset.speed,
-      ease: "none",
-    });
-
-    const elements: string[] = gsap.utils.toArray("[is-inview]");
-    elements.forEach((elmt: string) => {
-      gsap.to(elmt, {
-        scrollTrigger: {
-          trigger: elmt,
-          start: "top 100%",
-          end: "top top",
-          onEnter: (elmt) => toggleClasses(elmt.trigger),
-          once: true,
-        },
-      });
-    });
-    gsap.from(".pageTitle", {
-      y: "100%",
-      opacity: "0",
-      duration: 0.8,
-      delay: (i, target) => target.dataset.delay,
-      ease: ease2,
-    });
-  });
-</script>
-
-<style lang="scss">
-  @import "../stylesheet/main.scss";
-
-  .taches {
-    background-image: url("/images/GRAIN.png");
-  }
-  .page {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: $color_background;
-  }
-  .index {
-    background-image: url("/images/fond-test-accueil.png");
-  }
-  .about {
-    background-image: url("/images/fond-about.png");
-  }
-  .work {
-    background-image: url("/images/fond-work.png");
-  }
-</style>

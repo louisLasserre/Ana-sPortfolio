@@ -39,11 +39,17 @@ $bezier: cubic-bezier(0.165, 0.84, 0.44, 1);
   &.inview.fromB, &.anim.fromB {
     animation-name: fromB;
     animation-duration: 1.8s;
+    transform: translateY(100%);
+    opacity: 0;
+    animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
   &.inview.fromLowB, &.anim.fromLowB {
     animation-name: fromLowB;
     animation-duration: 1.8s;
+    transform: translateY(50%);
+    opacity: 0;
+    animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }

@@ -4,7 +4,7 @@ import ArrowLeft from "src/icons/ArrowLeft.astro";
 const { back, mode = "light" } = Astro.props;
 ---
 
-<div class={`header ${mode}`}>
+<header class={`header ${mode}`}>
   {
     back ? (
       <a href={back} title="go back">
@@ -15,14 +15,14 @@ const { back, mode = "light" } = Astro.props;
     )
   }
 
-  <a class="romie name" href="/">Anais Akkouche</a>
+  <a class="romie name" href="/">Anaïs Akkouche</a>
 
   <button class="hamb" title="toggle navigation menu">
     <div class="trait trait-top"></div>
     <div class="trait trait-middle"></div>
     <div class="trait trait-bottom"></div>
   </button>
-</div>
+</header>
 
 <section class={`hambOpen romie ${mode}`}>
   <div class="links">
@@ -145,6 +145,12 @@ const { back, mode = "light" } = Astro.props;
 <style lang="scss" is:global>
   @import "../stylesheet/main.scss";
 
+  .header {
+    background-image: url('/images/GRAIN-nav.png');
+
+  }
+
+
   .hambOpen {
     &.light {
       background-color: $color_dark;
@@ -179,11 +185,12 @@ const { back, mode = "light" } = Astro.props;
     display: flex;
     position: fixed;
     top: 0;
-    left: 3rem;
-    right: 3rem;
+    left: 0;
+    right: 0;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
+    padding: 1rem 3rem;
+
     z-index: 20;
 
     &.light {

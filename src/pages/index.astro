@@ -4,7 +4,7 @@ import DefaultLayout from "../layouts/DefaultLayout.astro";
 
 import { getDirectusClient } from "../utils/get-directus-client";
 
-import { APIbuilderData, importComponents } from "src/utils/import-components";
+//import { APIbuilderData, importComponents } from "src/utils/import-components";
 import Hero from "@components/Hero.astro";
 import LeftAndRightTexts from "@components/LeftAndRightTexts.astro";
 import ParallaxProjects from "@components/ParallaxProjects.astro";
@@ -34,7 +34,7 @@ const heroProps = {
 // const components = await importComponents(componentsToImport);
 ---
 
-<DefaultLayout>
+<DefaultLayout pageTitle="Home">
   <!-- {
       components.map((Component) => {
         return Component.then((Result) => <Result />);

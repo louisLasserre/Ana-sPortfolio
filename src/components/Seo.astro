@@ -1,0 +1,31 @@
+---
+export type TPageTypes = "article"| "book"| "website"| "product"| "profile"| "video"| "music.album"| "music.song"| "place"| "restaurant";
+
+export interface Props {
+  image: string;
+  author?: string;
+  pageTitle: string;
+  typeOf?: TPageTypes;
+  description: string;
+  ogDdescription?: string;
+}
+
+const { author, typeOf, description, image, pageTitle, ogDdescription } =
+  Astro.props;
+---
+
+{/* Mandatory */}
+<title>{pageTitle} - Anaïs Portfolio</title>
+<meta name="description" content={description} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={ogDdescription ?? description} />
+<meta property="og:image" content={image ?? ""} />
+
+{/* With Default properties */}
+<meta property="og:type" content={typeOf} />
+<meta property="og:locale" content="fr_FR" />
+<meta name="robots" content="all" />
+
+<meta name="distribution" content="global" />
+<meta name="content-language" content="fr" />
+<meta name="author" content={author} />
