@@ -1,24 +1,26 @@
+---
+interface Props {
+  title?: string;
+  texts: string[];
+  img: {
+    src: string;
+    alt?: string;
+  };
+}
+
+const { title, texts, img } = Astro.props;
+---
+
 <section class="my-vision">
   <div class="container-small">
     <article class="column">
-      <h2 is-inview="fromB">My vision</h2>
+      {(<h2 is-inview="fromB">{title}</h2>)}
 
-      <p is-inview="fromB">Beauty is in everything.</p>
-      <p is-inview="fromB">
-        I have always been into art and design, whether it be photography,
-        music, fashion or magazines.
-      </p>
-      <p is-inview="fromB">
-        As a designer, my goal is to help brands reach their full potential with
-        designs curated for them.
-      </p><p is-inview="fromB">
-        I am passionate about creating designs that are not only aesthetically
-        pleasing but also serve a purpose.
-      </p>
+      {texts.map((text) => <p is-inview="fromB">{text}</p>)}
     </article>
     <div class="column">
       <div class="imgContainer" is-inview="fromLowB">
-        <img src="/images/profile.png" alt="" srcset="" />
+        <img src={img.src} alt={img.alt} srcset="" />
       </div>
     </div>
   </div>

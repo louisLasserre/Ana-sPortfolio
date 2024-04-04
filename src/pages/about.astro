@@ -14,11 +14,24 @@ const heroProps = {
   size: "small",
 };
 const citation = "CREATIVITY PAIRED WITH GUIDANCE CREATES THE BEST ART.";
+const data = {
+  title: "My vision",
+  texts: [
+    "Beauty is in everything.",
+    "I have always been into art and design, whether it be photography, music, fashion or magazines.",
+    "As a designer, my goal is to help brands reach their full potential with designs curated for them.",
+    "I am passionate about creating designs that are not only aesthetically pleasing but also serve a purpose.",
+  ],
+  img: {
+    src: "/images/profile.png",
+    alt: "profile picture",
+  },
+};
 ---
 
 <DefaultLayout back="/" page="about" pageTitle="About me">
   <Hero {...heroProps} />
-  <TextImageColumns />
+  <TextImageColumns {...data} />
   <Citation text={citation} />
   <Skills />
   <GetInTouch />

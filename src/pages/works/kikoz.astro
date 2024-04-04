@@ -1,0 +1,50 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import TextImageColumns from "@components/TextImageColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "Kikoz",
+  lead: "November 2022",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["app design", "hackaton", "ux-ui design", "social media"];
+
+const citation = `OUR PURPOSE IS TO FIND HELPFUL & EFFECTIVE  SOLUTIONS FOR COMMUNITIES IN NEED`;
+
+const data = {
+  texts: [
+    `"KIKOZ" is a college project carried out as part of a Hackathon aimed at generating responsible solutions and implementing actions to transform the field of communications, under the theme "HERE AND NOW," over a period of 5 days.`,
+    "I have always been into art and design, whether it be photography, music, fashion or magazines.",
+    "As a designer, my goal is to help brands reach their full potential with designs curated for them.",
+    "I am passionate about creating designs that are not only aesthetically pleasing but also serve a purpose.",
+  ],
+  img: {
+    src: "/images/kikoz/kikoz-mockup.png",
+    alt: "mockup of the website",
+  },
+};
+---
+
+<ProjectsLayout back="/works" pageTitle="Kikoz" mode="dark">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <TextImageColumns {...data} />
+
+  <ImageInContainer
+    image={{
+      src: "/images/kikoz/kikoz-desktop-mockup.webp",
+      alt: "desktop mockup",
+    }}
+  />
+  <Citation text={citation} />
+</ProjectsLayout>
