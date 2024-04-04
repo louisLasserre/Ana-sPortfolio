@@ -1,0 +1,103 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import Paragraphe from "@components/Paragraphe.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import WorkTextImageColumns from "@components/WorkTextImageColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "INTERVOUS",
+  lead: "October 2023",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["app design", "ux-ui design", "social media"];
+const textColumnsL =
+  "Miecolo is a college project. The goal was to transform the brand, seller of connected weights for bees. ";
+
+const textColumnsR =
+  "Our main focus was to modernize the brand and define a clear target. The original concept and identity of the brand lacked design and power.";
+const citation = `PUTTING PEOPLE AT THE CENTER OF OUR CONTENT MEANS GIVING THEM THEIR VOICE BACK.`;
+---
+
+<ProjectsLayout back="/works" pageTitle="Miecolo" mode="dark">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <ImageFull
+    image={{
+      src: "/images/intervous/mockup.webp",
+      alt: "mockup of the website",
+    }}
+  />
+
+  <WorkTextImageColumns
+    imgLeft={false}
+    text={"Intervous is a college project during which we had to create a new form of media. <br><br> 5 people interviewed daily, with one question “What is an information you would like to share today ?”. <br>The answers are put into a 2 minute video on the app paired with added factual informations to support the interviews. The user can interact with the community and add 1 daily information on their profile. <br><br> The goal is to change our relationship with social media and our consumption of information by limiting its quantity and expanding the subjects/categories. "}
+    img={{
+      src: "/images/intervous/InstagramPost14.png",
+      alt: "Instagram post",
+    }}
+  />
+  <WorkTextImageColumns
+    imgLeft={true}
+    text={"In today’s society there is a need to change our ways regarding the consumption of information, especially for the youth. <br><br> Here we put people at the center of the information. Intervous allows you to find daily news given by the public. <br><br> Whether it be national news or a mundane information, you can share it and spark a conversation.  "}
+    img={{
+      src: "/images/intervous/InstagramPost.png",
+      alt: "Instagram post",
+    }}
+  />
+  <ImageThreeColumns
+    bigGap={true}
+    imgs={[
+      {
+        src: "/images/intervous/design1.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/intervous/design2.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/intervous/design3.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/intervous/design4.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/intervous/design5.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/intervous/design6.png",
+        alt: "design du site réalisé",
+      },
+    ]}
+  />
+  <Citation text={citation} />
+
+  <ImageFull
+    image={{
+      src: "/images/intervous/mockup2.webp",
+      alt: "mockup of the website",
+    }}
+  />
+
+  <Paragraphe
+    text={"The app evolves & changes daily, each day is associated with a color."}
+  />
+  <Paragraphe
+    text={"On social media our goal is to bring the viewer to INTERVOUS to spend less time doom scrolling and instead spend limited time on the app, hence the limited (5) informations daily. <br><br> We focus on daily interactions with the community, polls, teasers..."}
+    title="SOCIAL MEDIA"
+  />
+
+  <ImageInContainer image={{ src: "/images/intervous/InstagramPost30.png" }} />
+</ProjectsLayout>

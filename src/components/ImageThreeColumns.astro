@@ -1,15 +1,16 @@
 ---
 interface Props {
+  bigGap?: boolean;
   imgs: {
     src: string;
     alt?: string;
   }[];
 }
-const { imgs } = Astro.props;
+const { imgs, bigGap } = Astro.props;
 ---
 
 <section class="container-small">
-  <div class="grid">
+  <div class={`grid ${bigGap ? "bigGap" : ""}`}>
     {
       imgs.map((img) => (
         <div class="imgContainer">
@@ -31,6 +32,10 @@ const { imgs } = Astro.props;
       grid-template-columns: 1fr 1fr 1fr;
       column-gap: 2rem;
       row-gap: 1rem;
+      &.bigGap {
+        column-gap: 1rem;
+        row-gap: 3rem;
+      }
       @media (max-width: $to_medium) {
         grid-template-columns: 1fr 1fr;
       }

@@ -41,7 +41,7 @@ const { data } = Astro.props;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 1rem;
-    row-gap: 1rem;
+    row-gap: 2rem;
     @media (max-width: $to_medium) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -92,6 +92,9 @@ const { data } = Astro.props;
       padding-top: 0.6rem;
       p {
         white-space: nowrap;
+      }
+      .view {
+        font-family: $font_medium;
       }
       .title {
         font-family: $font_title;

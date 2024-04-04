@@ -1,0 +1,55 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import ImgAndTextInlineCta from "@components/ImgAndTextInlineCta.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "SAMIRA'S JOURNEY",
+  lead: "January 2024",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["ux-ui design", "3d", "digital experience"];
+
+const data = {
+  image: {
+    src: "/images/samiras-journey/statue.png",
+    alt: "3d statue",
+    size: "sm",
+  },
+  text: `This site was created as part of a university project.
+    It aims at highlighting and putting forward Ukrainian women forced to leave their heritage and homes because of the war.
+    We got to know Samira and her story, we then put her and her daughter at the center of our project and shared their journey.
+    <br/><br/>
+    Technology used : Blender & Polycam`,
+  btn: {
+    text: "Visit website",
+    href: "https://1-samira.les-voix-errantes-de-kyiv.fr/",
+  },
+};
+
+const citation = `LOVE IS AT THE CENTER OF EVERY STORY, YOU JUST HAVE TO HIGHLIGHT IT.`;
+---
+
+<ProjectsLayout back="/works" pageTitle="Samira's journey" mode="light">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <ImgAndTextInlineCta {...data} />
+
+  <ImageFull
+    image={{
+      src: "/images/samiras-journey/mockup.png",
+      alt: "mockup of the website",
+    }}
+  />
+
+  <Citation text={citation} />
+</ProjectsLayout>

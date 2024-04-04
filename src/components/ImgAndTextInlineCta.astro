@@ -5,6 +5,7 @@ interface Props {
   image: {
     src: string;
     alt?: string;
+    size?: "sm" | "lg";
   };
   text: string;
   btn: {
@@ -18,19 +19,15 @@ const { image, text, btn } = Astro.props;
 
 <section class="container-small">
   <div class="flex">
-    <div class="imgContainer">
-      <img src="/images/yedus/mockup.png" alt="" />
+    <div class=`imgContainer ${image.size}`>
+      <img src={image.src} alt={image.alt} />
     </div>
     <div class="text">
-      <p>
-        Yedus is a website that curates a song depending on your mood.<br /><br
-        /> Choose your current mood and listen to music that match!<br /><br /> This
-        is a demo version that currently only works with Spotify.<br /><br /> Technology
-        used: RubyOnRails & Figma
-      </p>
+      <p set:html={text} />
+
       <div class="btnContainer">
-        <ButtonOutline href="https://yedusv2.osc-fr1.scalingo.io/">
-          Visit website
+        <ButtonOutline href={btn.href}>
+          {btn.text}
         </ButtonOutline>
       </div>
     </div>
@@ -49,9 +46,23 @@ const { image, text, btn } = Astro.props;
         flex-direction: column;
       }
       .imgContainer {
-        width: 72%;
+        &.sm {
+          width: 40%;
+          min-width: 40%;
+        }
+        &.lg {
+          width: 72%;
+          min-width: 72%;
+        }
         @media (max-width: $to_medium) {
-          width: 80%;
+          &.sm {
+            width: 64%;
+            min-width: 64%;
+          }
+          &.lg {
+            width: 80%;
+            min-width: 80%;
+          }
           margin: 0 auto;
         }
         @media (max-width: $to_small) {
@@ -64,8 +75,11 @@ const { image, text, btn } = Astro.props;
         }
       }
       .btnContainer {
-        margin: 2rem auto 0 auto;
+        margin: 2rem 0 0 auto;
         width: fit-content;
+        @media (max-width: $to_medium) {
+          margin: 2rem auto 0 auto;
+        }
       }
     }
   }

@@ -1,0 +1,62 @@
+---
+import Hero from "@components/Hero.astro";
+import Citation from "@components/Citation.astro";
+import ImageFull from "@components/ImageFull.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import TextTwoColumnsCta from "@components/TextTwoColumnsCta.astro";
+
+const heroProps = {
+  title: "SHARE & CHANGE",
+  lead: "March 2022",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["app design", "workshop", "ux-ui design", "social media"];
+
+const textTwoColumnsCta = {
+  left: "Share&Change is a platform created during a workshop, designed for newcomers in France, with the goal to assist and simplify their lives.<br/><br/> The platform fosters solidarity by offering testimonials and support to better guide and accompany newcomers. Its goal is to facilitate their daily life by listing all relevant services (including associations, social economy entities, institutions, companies) tailored to their needs like food, housing, and administrative tasks through 30-second videos.",
+  right:
+    "This project addresses a crucial need for social inclusion, as access to information and services is often challenging for newcomers, potentially leading to social isolation and exclusion. The videos are created by the newcomers themselves, aiming to share their life stories and highlight the various services that have helped them. ",
+  button: {
+    href: "https://share-and-change.osc-fr1.scalingo.io/",
+    text: "Visit Website",
+  },
+};
+
+const citation = `COMMUNITY-DRIVEN SUPPORT AND RESOURCES ARE THE KEYS TO AN BETTER SOCIETY.`;
+---
+
+<ProjectsLayout back="/works" pageTitle="Share & change" mode="dark">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <TextTwoColumnsCta {...textTwoColumnsCta} />
+
+  <ImageFull
+    image={{
+      src: "/images/share-and-change/phoneMokup.png",
+      alt: "mockup of the website",
+    }}
+  />
+  <ImageThreeColumns
+    imgs={[
+      {
+        src: "/images/share-and-change/designOne.webp",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/share-and-change/designTwo.png",
+        alt: "design du site réalisé",
+      },
+      {
+        src: "/images/share-and-change/designThree.png",
+        alt: "design du site réalisé",
+      },
+    ]}
+  />
+  <Citation text={citation} />
+</ProjectsLayout>

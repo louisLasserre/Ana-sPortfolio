@@ -1,0 +1,49 @@
+---
+import Citation from "@components/Citation.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "MIECOLO",
+  lead: "March 2023",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["branding", "ux ui design", "social media"];
+const textColumnsL =
+  "Miecolo is a college project. The goal was to transform the brand, seller of connected weights for bees. ";
+
+const textColumnsR =
+  "Our main focus was to modernize the brand and define a clear target. The original concept and identity of the brand lacked design and power.";
+const citation = `Blending practicality with enjoyment offers the ideal formula for making progress both effective & delightful.`;
+---
+
+<ProjectsLayout back="/works" pageTitle="Miecolo" mode="dark">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <TextColumns left={textColumnsL} right={textColumnsR} />
+  <ImageFull
+    image={{
+      src: "/images/miecolo/mockup.png",
+      alt: "mockup of the website",
+    }}
+  />
+  <ImageThreeColumns
+    imgs={[
+      { src: "/images/miecolo/productOne.png", alt: "design du site réalisé" },
+      { src: "/images/miecolo/productTwo.png", alt: "design du site réalisé" },
+      {
+        src: "/images/miecolo/productThree.png",
+        alt: "design du site réalisé",
+      },
+    ]}
+  />
+  <Citation text={citation} />
+</ProjectsLayout>

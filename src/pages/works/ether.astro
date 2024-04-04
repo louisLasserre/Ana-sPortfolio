@@ -1,0 +1,56 @@
+---
+import Citation from "@components/Citation.astro";
+import GridImages from "@components/GridImages.astro";
+import Hero from "@components/Hero.astro";
+import ImageFull from "@components/ImageFull.astro";
+import ImageInContainer from "@components/ImageInContainer.astro";
+import ImageThreeColumns from "@components/ImageThreeColumns.astro";
+import LineImages from "@components/LineImages.astro";
+import TagsBarre from "@components/TagsBarre.astro";
+import TextColumns from "@components/TextColumns.astro";
+import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
+
+const heroProps = {
+  title: "ETHER",
+  lead: "February 2024",
+  line: false,
+  ta: "center",
+  lh: "1.2",
+};
+
+const tags = ["branding", "ux ui design", "web design", "social media"];
+const textColumnsL =
+  "Ether is an fictive clothing and apparel brand that embodies ethical, handmade, and sustainable practices I came up with. Drawing inspiration from the enchanting hues of summer sunsets.";
+
+const textColumnsR =
+  "I have designed a website, crafted social media content, and posters for this brand. All aimed at inspiring the customers and enhancing their summer experiences.<br/><br/> Photography : Daniel Faro ";
+const citation = `NATURE’S BEAUTY IS AVAILABLE EVERYWHERE - YOU JUST HAVE TO FIND IT`;
+
+const images = [
+  { src: "/images/ether/image1.png" },
+  { src: "/images/ether/image2.png" },
+  { src: "/images/ether/image3.png" },
+  { src: "/images/ether/image4.png" },
+];
+const lineImages = [
+  { src: "/images/ether/line1.png", aspectRatio: "1/1" },
+  { src: "/images/ether/line2.png", aspectRatio: "1/1" },
+  { src: "/images/ether/line3.png", aspectRatio: "1/1" },
+];
+---
+
+<ProjectsLayout back="/works" pageTitle="Ether" mode="dark">
+  <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
+
+  <GridImages images={images} columns={2} rowGap={1} columnGap={1} />
+
+  <TextColumns left={textColumnsL} right={textColumnsR} />
+
+  <ImageInContainer image={{ src: "/images/ether/bigWebsite.webp" }} />
+
+  <Citation text={citation} />
+
+  <LineImages images={lineImages} columns={3} columnGap={0.2} container="" />
+
+  <ImageInContainer image={{ src: "/images/ether/mockup2.webp" }} />
+</ProjectsLayout>

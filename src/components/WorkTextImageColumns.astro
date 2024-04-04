@@ -1,8 +1,8 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   text: string;
-  imgLeft?: boolean
+  imgLeft?: boolean;
   img: {
     src: string;
     alt?: string;
@@ -14,7 +14,7 @@ const { title, text, img, imgLeft } = Astro.props;
 <section class="my-vision">
   <div class=`container-small ${imgLeft ? 'invert' : ''}`>
     <article class="column">
-      <h2 is-inview="fromB">{title}</h2>
+      {title && <h2 is-inview="fromB">{title}</h2>}
 
       <p set:html={text} is-inview="fromLowB" />
     </article>

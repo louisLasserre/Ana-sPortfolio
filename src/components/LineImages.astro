@@ -3,6 +3,7 @@ interface Props {
   images: {
     src: string;
     alt?: string;
+    aspectRatio: string;
   }[];
   columns: number;
   rowGap?: number;
@@ -25,7 +26,12 @@ const style = `grid-template-columns: repeat(${columns}, 1fr); row-gap: ${rowGap
   <div class="grid" style={style}>
     {
       images.map((img, index) => (
-        <div class="imgContainer" is-inview="fromB" data-delay={index / 10}>
+        <div
+          class="imgContainer"
+          style={`aspect-ratio: ${img.aspectRatio};`}
+          is-inview="fromL"
+          data-delay={index / 10}
+        >
           <img src={img.src} alt={img.alt ? img.alt : ""} />
         </div>
       ))
@@ -42,10 +48,13 @@ const style = `grid-template-columns: repeat(${columns}, 1fr); row-gap: ${rowGap
       display: grid;
       .imgContainer {
         width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
         //aspect-ratio: 16/9;
 
         img {
           width: 100%;
+          height: 100%;
           object-fit: cover;
         }
       }
