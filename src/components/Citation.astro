@@ -1,23 +1,25 @@
 ---
 interface Props {
   text: string;
+  font?: string;
 }
 
-const { text } = Astro.props;
+const { text, font = "ninna" } = Astro.props;
 ---
 
 <div class="container-small">
   <p is-inview="fromB">{text}</p>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ font }}>
   .container-small {
     margin: 8rem 0;
   }
   @import "../stylesheet/main.scss";
 
   p {
-    font-family: $font_ninna;
+    text-transform: uppercase;
+    font-family: var(--font);
     font-size: 1.8rem;
   }
 </style>

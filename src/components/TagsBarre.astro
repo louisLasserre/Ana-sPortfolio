@@ -21,6 +21,10 @@ const { tags } = Astro.props;
     width: 100%;
     padding: 0.6rem 3rem;
     border-radius: 120px;
+    @media (max-width: $to-medium) {
+      border-radius: 80px;
+      gap: 2rem;
+    }
     border: 1px solid;
     flex-wrap: wrap;
     p {

@@ -5,6 +5,7 @@ import TagsBarre from "@components/TagsBarre.astro";
 import ProjectsLayout from "src/layouts/ProjectsLayout.astro";
 import ImageInContainer from "@components/ImageInContainer.astro";
 import TextImageColumns from "@components/TextImageColumns.astro";
+import GridImages from "@components/GridImages.astro";
 
 const heroProps = {
   title: "Kikoz",
@@ -30,9 +31,20 @@ const data = {
     alt: "mockup of the website",
   },
 };
+
+const images = [
+  { src: "/images/kikoz/kikoz1.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz2.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz3.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz4.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz5.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz6.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz7.png", alt: "kikoz app mobile design" },
+  { src: "/images/kikoz/kikoz8.png", alt: "kikoz app mobile design" },
+];
 ---
 
-<ProjectsLayout back="/works" pageTitle="Kikoz" mode="dark">
+<ProjectsLayout pageTitle="Kikoz" mode="dark">
   <Hero {...heroProps}><TagsBarre tags={tags} /></Hero>
 
   <TextImageColumns {...data} />
@@ -44,4 +56,6 @@ const data = {
     }}
   />
   <Citation text={citation} />
+
+  <GridImages images={images} columns={4} mobileColumns={2} />
 </ProjectsLayout>

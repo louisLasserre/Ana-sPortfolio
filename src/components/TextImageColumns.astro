@@ -34,16 +34,24 @@ const { title, texts, img } = Astro.props;
       align-items: flex-end;
       gap: 10%;
 
-      @media (max-width: $from_small) {
+      @media (max-width: $to_small) {
         flex-direction: column;
         align-items: flex-start;
+        gap: 2rem;
       }
       padding-top: 10rem;
 
       .column {
         width: 50%;
+
+        @media (max-width: $to_small) {
+          width: 100%;
+        }
         .imgContainer {
           width: 80%;
+          @media (max-width: $to_small) {
+            width: 60%;
+          }
           margin: 0 auto;
           img {
             width: 100%;

@@ -5,6 +5,7 @@ interface Props {
     alt?: string;
   }[];
   columns: number;
+  mobileColumns?: number;
   rowGap?: number;
   columnGap?: number;
   container?: string;
@@ -13,16 +14,15 @@ interface Props {
 const {
   images,
   columns = 3,
+  mobileColumns = columns,
   rowGap = 1,
   columnGap = 1,
   container = "container-small",
 } = Astro.props;
-
-const style = `grid-template-columns: repeat(${columns}, 1fr); row-gap: ${rowGap}rem; column-gap: ${columnGap}rem; `;
 ---
 
 <section class={`section ${container}`}>
-  <div class="grid" style={style}>
+  <div class="grid">
     {
       images.map((img, index) => (
         <div class="imgContainer" is-inview="fromB" data-delay={index / 10}>
@@ -33,16 +33,32 @@ const style = `grid-template-columns: repeat(${columns}, 1fr); row-gap: ${rowGap
   </div>
 </section>
 
-<style lang="scss">
+<style
+  lang="scss"
+  define:vars={{
+    columns,
+    mobileColumns,
+    rowGap: `${rowGap}rem`,
+    columnGap: `${columnGap}rem`,
+  }}
+>
   @import "../stylesheet/main.scss";
 
   .section {
     margin-top: 6rem;
     .grid {
       display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      row-gap: var(--rowGap);
+      column-gap: var(--columnGap);
+
+      @media (max-width: $to_small) {
+        grid-template-columns: repeat(var(--mobileColumns), 1fr);
+      }
+
       .imgContainer {
         width: 100%;
-        //aspect-ratio: 16/9;
+        /*aspect-ratio: 16/9;*/
 
         img {
           width: 100%;
