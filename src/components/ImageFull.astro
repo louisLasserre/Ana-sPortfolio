@@ -4,20 +4,23 @@ interface Props {
     src: string;
     alt?: string;
   };
+  h?: number;
 }
-const { image } = Astro.props;
+const { image, h = 90 } = Astro.props;
+
+const height = `${h}vh`;
 ---
 
 <div class="imageContainer">
   <img src={image.src} alt={image.alt ? image.alt : ""} srcset="" />
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ height }}>
   @import "../stylesheet/main.scss";
 
   .imageContainer {
     margin-top: 8rem;
-    height: 90vh;
+    height: var(--height);
     overflow: hidden;
     width: 100%;
     img {

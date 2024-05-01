@@ -1,19 +1,21 @@
 ---
 interface Props {
   href: string;
+  fw: "bold" | "normal";
 }
-const { href } = Astro.props;
+const { href, fw = "normal" } = Astro.props;
 ---
 
 <a href={href} class="button"><slot /></a>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ fw }}>
   @import "../stylesheet/main.scss";
 
   .button {
     padding: 0.7rem 0.9rem;
     border: 1px solid;
     font-size: $size-large;
+    font-weight: var(--fw);
     border-radius: 200px;
     white-space: nowrap;
     width: fit-content;

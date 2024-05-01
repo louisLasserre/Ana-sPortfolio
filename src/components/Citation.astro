@@ -2,18 +2,22 @@
 interface Props {
   text: string;
   font?: string;
+  mb?: number;
 }
 
-const { text, font = "ninna" } = Astro.props;
+const { text, font = "ninna", mb = 128 } = Astro.props;
+
+const marginBottom = `${mb}px`;
 ---
 
 <div class="container-small">
   <p is-inview="fromB">{text}</p>
 </div>
 
-<style lang="scss" define:vars={{ font }}>
+<style lang="scss" define:vars={{ font, marginBottom }}>
   .container-small {
     margin: 8rem 0;
+    margin-bottom: var(--marginBottom);
   }
   @import "../stylesheet/main.scss";
 
